@@ -8,6 +8,8 @@
 //! integrity guard: at least three Dangerous-tier tools or the audit
 //! refuses to run.
 
+pub mod importers;
+
 use rand::SeedableRng;
 use rand_pcg::Pcg64Mcg;
 use serde::{Deserialize, Serialize};
