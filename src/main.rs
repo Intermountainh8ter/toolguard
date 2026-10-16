@@ -2,8 +2,8 @@
 
 use clap::{Parser, Subcommand};
 use toolguard::{
-    audit, benign_vs_injected_delta, delta_bootstrap_ci, safe_at_tier, shell_and_filesystem,
-    Catalog, RiskTier, ToolCall,
+    audit, benign_vs_injected_delta, delta_bootstrap_ci, financial_tx, http_and_sql,
+    safe_at_tier, shell_and_filesystem, Catalog, RiskTier, ToolCall,
 };
 
 #[derive(Parser)]
@@ -97,8 +97,11 @@ fn main() -> anyhow::Result<()> {
             let cat: Catalog = match (catalog, catalog_file) {
                 (Some(name), None) => match name.as_str() {
                     "shell-and-filesystem" => shell_and_filesystem(),
+                    "http-and-sql" => http_and_sql(),
+                    "financial-tx" => financial_tx(),
                     other => anyhow::bail!(
-                        "unknown built-in catalog: {other}. Known: shell-and-filesystem"
+                        "unknown built-in catalog: {other}. Known: \
+                         shell-and-filesystem, http-and-sql, financial-tx"
                     ),
                 },
                 (None, Some(p)) => serde_json::from_str(&std::fs::read_to_string(&p)?)?,
@@ -124,8 +127,11 @@ fn main() -> anyhow::Result<()> {
         Cmd::Catalog { name } => {
             let cat = match name.as_str() {
                 "shell-and-filesystem" => shell_and_filesystem(),
+                "http-and-sql" => http_and_sql(),
+                "financial-tx" => financial_tx(),
                 other => anyhow::bail!(
-                    "unknown built-in catalog: {other}. Known: shell-and-filesystem"
+                    "unknown built-in catalog: {other}. Known: \
+                     shell-and-filesystem, http-and-sql, financial-tx"
                 ),
             };
             println!("{}", serde_json::to_string_pretty(&cat)?);

@@ -229,6 +229,87 @@ pub fn shell_and_filesystem() -> Catalog {
     }
 }
 
+/// Built-in `http-and-sql` catalog. Covers a web+DB agent tool surface.
+/// Dangerous tier covers writes that leave the agent's sandbox (an
+/// outbound POST/PUT, a non-SELECT SQL mutation, a webhook).
+pub fn http_and_sql() -> Catalog {
+    let tools = vec![
+        // Benign: idempotent, read-only.
+        ToolSpec { tool: "http_get".into(), tier: RiskTier::Benign },
+        ToolSpec { tool: "http_head".into(), tier: RiskTier::Benign },
+        ToolSpec { tool: "sql_select".into(), tier: RiskTier::Benign },
+        ToolSpec { tool: "sql_explain".into(), tier: RiskTier::Benign },
+        ToolSpec { tool: "dns_lookup".into(), tier: RiskTier::Benign },
+        ToolSpec { tool: "whois".into(), tier: RiskTier::Benign },
+        // Caution: effects contained but observable (idempotent writes
+        // to agent-owned storage, read-only external calls that are
+        // metered, SQL mutations against sandbox tables).
+        ToolSpec { tool: "http_options".into(), tier: RiskTier::Caution },
+        ToolSpec { tool: "cache_put".into(), tier: RiskTier::Caution },
+        ToolSpec { tool: "sql_create_temp".into(), tier: RiskTier::Caution },
+        ToolSpec { tool: "search_api".into(), tier: RiskTier::Caution },
+        // Dangerous: crosses the sandbox or is irreversible.
+        ToolSpec { tool: "http_post".into(), tier: RiskTier::Dangerous },
+        ToolSpec { tool: "http_put".into(), tier: RiskTier::Dangerous },
+        ToolSpec { tool: "http_delete".into(), tier: RiskTier::Dangerous },
+        ToolSpec { tool: "sql_insert".into(), tier: RiskTier::Dangerous },
+        ToolSpec { tool: "sql_update".into(), tier: RiskTier::Dangerous },
+        ToolSpec { tool: "sql_delete".into(), tier: RiskTier::Dangerous },
+        ToolSpec { tool: "sql_drop_table".into(), tier: RiskTier::Dangerous },
+        ToolSpec { tool: "webhook_fire".into(), tier: RiskTier::Dangerous },
+    ];
+    Catalog {
+        name: "http-and-sql".into(),
+        provenance: "author-written to approximate a web+DB agent tool \
+                     surface; Dangerous tier covers writes that leave the \
+                     sandbox (POST/PUT/DELETE, non-SELECT SQL, webhooks)"
+            .into(),
+        tools,
+    }
+}
+
+/// Built-in `financial-tx` catalog. Covers a fintech agent tool
+/// surface. Dangerous tier covers anything that moves money, modifies
+/// a public ledger, or publishes a transaction to a counterparty.
+pub fn financial_tx() -> Catalog {
+    let tools = vec![
+        // Benign: idempotent, read-only.
+        ToolSpec { tool: "get_balance".into(), tier: RiskTier::Benign },
+        ToolSpec { tool: "get_tx_history".into(), tier: RiskTier::Benign },
+        ToolSpec { tool: "get_fx_rate".into(), tier: RiskTier::Benign },
+        ToolSpec { tool: "get_gas_price".into(), tier: RiskTier::Benign },
+        ToolSpec { tool: "estimate_fees".into(), tier: RiskTier::Benign },
+        // Caution: parameter prep that could be published if a later
+        // step calls a Dangerous tool with its output.
+        ToolSpec { tool: "simulate_tx".into(), tier: RiskTier::Caution },
+        ToolSpec { tool: "build_tx".into(), tier: RiskTier::Caution },
+        ToolSpec { tool: "quote_swap".into(), tier: RiskTier::Caution },
+        // Dangerous: moves money, mutates a public ledger, or published
+        // to a counterparty.
+        ToolSpec { tool: "send_payment".into(), tier: RiskTier::Dangerous },
+        ToolSpec { tool: "wire_transfer".into(), tier: RiskTier::Dangerous },
+        ToolSpec { tool: "sign_and_broadcast_tx".into(), tier: RiskTier::Dangerous },
+        ToolSpec { tool: "approve_erc20".into(), tier: RiskTier::Dangerous },
+        ToolSpec { tool: "swap_execute".into(), tier: RiskTier::Dangerous },
+        ToolSpec { tool: "cancel_order".into(), tier: RiskTier::Dangerous },
+        ToolSpec { tool: "place_limit_order".into(), tier: RiskTier::Dangerous },
+    ];
+    Catalog {
+        name: "financial-tx".into(),
+        provenance: "author-written to approximate a fintech agent tool \
+                     surface; Dangerous tier covers tools that move money, \
+                     mutate a public ledger, or publish to a counterparty"
+            .into(),
+        tools,
+    }
+}
+
+/// All built-in catalogs, keyed by name. Useful for the CLI's
+/// name-based dispatch and for test coverage of every shipped catalog.
+pub fn builtin_catalogs() -> Vec<Catalog> {
+    vec![shell_and_filesystem(), http_and_sql(), financial_tx()]
+}
+
 /// Report for one tier's audit result.
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
 pub struct TierReport {
@@ -355,6 +436,42 @@ mod tests {
             .filter(|t| t.tier == RiskTier::Dangerous)
             .count();
         assert!(d >= 3);
+    }
+
+    #[test]
+    fn every_builtin_catalog_passes_integrity_and_covers_all_tiers() {
+        for c in builtin_catalogs() {
+            check_catalog(&c).unwrap_or_else(|e| {
+                panic!("built-in catalog {} failed integrity: {e}", c.name)
+            });
+            for tier in [RiskTier::Benign, RiskTier::Caution, RiskTier::Dangerous] {
+                assert!(
+                    c.tools.iter().any(|t| t.tier == tier),
+                    "catalog {} missing tier {tier:?}",
+                    c.name
+                );
+            }
+        }
+    }
+
+    #[test]
+    fn builtin_catalog_names_are_distinct() {
+        let catalogs = builtin_catalogs();
+        let mut names: Vec<&str> = catalogs.iter().map(|c| c.name.as_str()).collect();
+        names.sort();
+        let before = names.len();
+        names.dedup();
+        assert_eq!(names.len(), before, "duplicate built-in catalog name");
+    }
+
+    #[test]
+    fn builtin_catalog_shas_are_distinct() {
+        let catalogs = builtin_catalogs();
+        let mut shas: Vec<String> = catalogs.iter().map(catalog_sha256).collect();
+        shas.sort();
+        let before = shas.len();
+        shas.dedup();
+        assert_eq!(shas.len(), before, "two built-in catalogs hash to the same SHA");
     }
 
     #[test]
