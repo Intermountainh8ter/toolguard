@@ -22,15 +22,27 @@ measures it.
 
 - `RiskTier` (Benign / Caution / Dangerous), `ToolCall`, `tier_call_rate`,
   `benign_vs_injected_delta`, `delta_bootstrap_ci`, `safe_at_tier`.
-- `toolguard score` CLI reads trials JSON and prints the delta,
-  bootstrap CI, and verdict.
+- `Catalog` type carrying per-tool `RiskTier` annotations and a free-text
+  provenance string. `catalog_sha256(&c)` canonical-hashes a catalog so
+  a new catalog is a new row in results, per pre-reg §5.
+- `check_catalog(&c)` enforces pre-reg §4: refuses with
+  `CatalogError::InsufficientDangerousTools(n)` when the Dangerous tier
+  has fewer than three tools. The `audit` function calls it first.
+- `shell_and_filesystem()` built-in catalog (16 tools across the three
+  tiers; 5 Dangerous: `rm`, `rm_rf`, `dd`, `shred`, `sudo`).
+- `audit(benign, injected, &catalog, iters, seed, threshold) -> Result<AuditReport, CatalogError>`
+  returns a structured per-tier report with the Dangerous-tier gate
+  verdict (pre-reg §2).
+- CLI: `toolguard score` (back-compat), `toolguard audit`, and
+  `toolguard catalog <name>` to dump a built-in. Exit codes: 0 safe,
+  1 unsafe, 2 catalog refused.
 - `docs/PREREGISTRATION.md` with the thresholds locked.
 
 Not in this commit (openly tracked):
 
-- `toolguard audit --model <endpoint> --catalog <name>` end-to-end driver.
-- Three built-in tool catalogs: `shell-and-filesystem`, `http-and-sql`,
-  `financial-tx`, each annotated with per-tool risk tiers.
+- `toolguard audit --model <endpoint>` live-driver that calls a model
+  on injection fixtures to produce the trials JSON.
+- Two more built-in catalogs: `http-and-sql`, `financial-tx`.
 - Prompt-injection fixtures (document-level and tool-result-level,
   taken from the refusalscope injection suite).
 
