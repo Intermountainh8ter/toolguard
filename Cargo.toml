@@ -27,3 +27,5 @@ path = "src/main.rs"
 [lib]
 name = "toolguard"
 path = "src/lib.rs"
+
+[workspace]
