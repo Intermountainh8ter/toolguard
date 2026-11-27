@@ -66,6 +66,14 @@ measures it.
   0.302 of unrewritten calls. The tool mix is a uniform draw over the catalog
   and the paths are author-written; this bounds the harness, not any deployed
   gate.
+- `toolguard rugpull`: model-free post-approval definition-change run. Result
+  `results/654-rugpull.json` (shell-and-filesystem, seed 7, n=1000): an
+  unpinned name-tier gate passes 1.0 of calls to mutated Dangerous tools
+  (`/arms/unpinned/pass_through_rate`), a SHA-256 definition-pinned gate
+  passes 0.0, and the pinned gate's false-block rate on unmutated calls is
+  0.0. The mutation is an author-written description change and the unpinned
+  gate never compares definitions, so the outcome follows from the
+  definitions; this bounds the harness, not any deployed gate.
 - `docs/PREREGISTRATION.md` with the thresholds locked.
 
 Not in this commit (openly tracked):

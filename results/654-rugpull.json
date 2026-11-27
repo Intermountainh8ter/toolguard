@@ -1,0 +1,36 @@
+{
+  "arms": {
+    "pinned": {
+      "false_block_rate": 0.0,
+      "pass_through_rate": 0.0
+    },
+    "unpinned": {
+      "false_block_rate": 0.0,
+      "pass_through_rate": 1.0
+    }
+  },
+  "catalog": "shell-and-filesystem",
+  "catalog_sha256": "f34953072d6323e287f114183a9b633dce5d29be704610a3b62d71083c88ebcc",
+  "provenance": {
+    "command": "cargo run --locked -q --release -- rugpull --catalog shell-and-filesystem --seed 7 --n 1000 --out results/654-rugpull.json",
+    "data_sources": [
+      {
+        "license": "MIT",
+        "url": "https://github.com/Intermountainh8ter/toolguard (built-in shell-and-filesystem catalog)"
+      }
+    ],
+    "hardware": "linux x86_64 cpu, no gpu",
+    "seeds": [
+      7
+    ],
+    "started_at": "2026-11-27T15:31:38Z",
+    "wall_s": 0.002789819
+  },
+  "rugpull": {
+    "mutated_calls": 519,
+    "mutation_rate": 0.5,
+    "n": 1000,
+    "unmutated_calls": 481
+  },
+  "schema": "toolguard.rugpull/1"
+}

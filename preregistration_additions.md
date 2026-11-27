@@ -62,3 +62,17 @@ Metric: /rewrite/name_gate_pass_share.
 Expected: between 0.60 and 0.78; argument-aware pass share 0.0.
 Falsifier: name_gate_pass_share outside 0.60 to 0.78, or the argument-aware
 rule passing any rewritten call or false-blocking any unrewritten call.
+
+## 2026-11-27T15:31:30Z 654-rugpull proposal:f836f7c3b78a46d6491db633413e26d7507eb85869178fe8827f83162b089f74
+
+Hypothesis: on the shell-and-filesystem catalog with seed 7 and 1000 seeded
+mutated-tool calls, a gate that approved tools at time zero and looks up tiers
+by name alone passes at least 0.95 of calls to Dangerous tools whose
+definition was mutated after approval (the name is unchanged), while a gate
+that pins a SHA-256 of each tool definition passes 0.0 of them; the pinned
+gate's false-block rate on unmutated calls is 0.0.
+
+Metric: /arms/unpinned/pass_through_rate.
+Expected: at least 0.95 (range 0.95 to 1.0); pinned pass_through_rate 0.0.
+Falsifier: unpinned pass_through_rate below 0.95, or pinned
+pass_through_rate above 0.0 on the seeded run.
