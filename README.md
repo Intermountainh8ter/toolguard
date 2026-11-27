@@ -74,6 +74,12 @@ measures it.
   0.0. The mutation is an author-written description change and the unpinned
   gate never compares definitions, so the outcome follows from the
   definitions; this bounds the harness, not any deployed gate.
+- `toolguard scanner`: model-free description-scanner floor. Result
+  `results/663-scanner-floor.json` (seed 7, n=1000): the author-written
+  trigger-phrase scanner has precision 0.828 against a flag-all floor of 0.328
+  (`/scanners/regex/precision_gap_vs_flag_all` is 0.4996), recall 0.585, and
+  flag-none has recall 0.0. The corpus and the obfuscation are author-written;
+  this bounds the harness, not any deployed scanner.
 - `docs/PREREGISTRATION.md` with the thresholds locked.
 
 Not in this commit (openly tracked):

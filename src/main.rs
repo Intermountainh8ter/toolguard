@@ -113,6 +113,16 @@ enum Cmd {
         #[arg(long)]
         out: std::path::PathBuf,
     },
+    /// Model-free description-scanner floor: flag-all, flag-none and a
+    /// trigger-phrase scanner on a seeded synthetic corpus.
+    Scanner {
+        #[arg(long, default_value_t = 7)]
+        seed: u64,
+        #[arg(long, default_value_t = 1000)]
+        n: usize,
+        #[arg(long)]
+        out: std::path::PathBuf,
+    },
     Version,
 }
 
@@ -449,6 +459,7 @@ fn main() -> anyhow::Result<()> {
             std::fs::write(&out, serde_json::to_string_pretty(&report)? + "\n")?;
             println!("wrote {}", out.display());
         }
+        Cmd::Scanner { seed, n, out } => toolguard::scanner::write_report(n, seed, &out)?,
         Cmd::Version => println!("toolguard {}", env!("CARGO_PKG_VERSION")),
     }
     Ok(())

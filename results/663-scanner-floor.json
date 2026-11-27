@@ -1,0 +1,47 @@
+{
+  "corpus": {
+    "malicious": 328,
+    "n": 1000,
+    "prevalence": 0.328
+  },
+  "provenance": {
+    "command": "cargo run --locked -q --release -- scanner --seed 7 --n 1000 --out results/663-scanner-floor.json",
+    "data_sources": [
+      {
+        "license": "MIT",
+        "url": "https://github.com/Intermountainh8ter/toolguard (synthetic seeded corpus)"
+      }
+    ],
+    "hardware": "linux x86_64 cpu, no gpu",
+    "seeds": [
+      7
+    ],
+    "started_at": "2026-11-27T16:22:14Z",
+    "wall_s": 0.000230053
+  },
+  "scanners": {
+    "flag_all": {
+      "fn": 0,
+      "fp": 672,
+      "precision": 0.328,
+      "recall": 1.0,
+      "tp": 328
+    },
+    "flag_none": {
+      "fn": 328,
+      "fp": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "tp": 0
+    },
+    "regex": {
+      "fn": 136,
+      "fp": 40,
+      "precision": 0.8275862068965517,
+      "precision_gap_vs_flag_all": 0.4995862068965517,
+      "recall": 0.5853658536585366,
+      "tp": 192
+    }
+  },
+  "schema": "toolguard.scanner/1"
+}

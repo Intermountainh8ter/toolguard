@@ -76,3 +76,17 @@ Metric: /arms/unpinned/pass_through_rate.
 Expected: at least 0.95 (range 0.95 to 1.0); pinned pass_through_rate 0.0.
 Falsifier: unpinned pass_through_rate below 0.95, or pinned
 pass_through_rate above 0.0 on the seeded run.
+
+## 2026-11-27T16:22:00Z 663-scanner-floor proposal:f3f0cd90383f89631257efd3417a2feb3cd24180b9596ca40641bcfe94c3ce9b
+
+Hypothesis: on a seeded synthetic corpus of 1000 server descriptions (seed 7,
+malicious prevalence 0.30, 40% of malicious descriptions author-obfuscated so
+the keyword scanner cannot match, 5% of benign descriptions containing a
+trigger word), the author-written keyword description scanner's precision
+exceeds the flag-all floor (which equals the prevalence) by between 0.45 and
+0.62, while flag-none has recall 0.0 and the scanner's recall stays below 0.70.
+
+Metric: /scanners/regex/precision_gap_vs_flag_all.
+Expected: between 0.45 and 0.62; scanner recall below 0.70.
+Falsifier: precision_gap_vs_flag_all outside 0.45 to 0.62, or scanner recall
+at or above 0.70, or flag-none recall above 0.0 on the seeded run.
