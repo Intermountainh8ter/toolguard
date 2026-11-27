@@ -74,6 +74,14 @@ measures it.
   0.0. The mutation is an author-written description change and the unpinned
   gate never compares definitions, so the outcome follows from the
   definitions; this bounds the harness, not any deployed gate.
+- `toolguard harnessnorm`: model-free harness-normalisation run. Result
+  `results/727-harnessnorm.json` (shell-and-filesystem, seed 7, n=1000): an
+  author-written unescape-and-trim normaliser changes 0.694 of calls
+  (`/transform/changed_rate`) and reports no warning for 0.7204610951008645 of those
+  changes (`/transform/silent_semantic_change_rate`); the pass-through arm
+  changes 0.0. Arguments and the backslash share are author-written, and
+  only unknown escapes raise a warning by construction; this bounds the
+  harness, not any deployed one.
 - `toolguard scanner`: model-free description-scanner floor. Result
   `results/663-scanner-floor.json` (seed 7, n=1000): the author-written
   trigger-phrase scanner has precision 0.828 against a flag-all floor of 0.328

@@ -90,3 +90,16 @@ Metric: /scanners/regex/precision_gap_vs_flag_all.
 Expected: between 0.45 and 0.62; scanner recall below 0.70.
 Falsifier: precision_gap_vs_flag_all outside 0.45 to 0.62, or scanner recall
 at or above 0.70, or flag-none recall above 0.0 on the seeded run.
+
+## 2026-11-27T22:28:46Z 727-harnessnorm proposal:ea692f6ceeb4dd43e1e1671b4a7cf65ebeae6f8928983644968a55180638b946
+
+Hypothesis: on 1000 seeded synthetic shell-and-filesystem calls (seed 7, 70%
+of arguments containing backslashes), an author-written unescape-and-trim
+normaliser changes the string the tool receives for some calls, and reports
+no warning for at least 0.5 of those changes (silent_semantic_change_rate
+>= 0.5), while a strict pass-through harness changes 0.0.
+
+Metric: /transform/silent_semantic_change_rate.
+Expected: at least 0.5 (range 0.5 to 1.0); pass-through change rate 0.0.
+Falsifier: silent_semantic_change_rate below 0.5 on the seeded run, or a
+non-zero pass-through change rate.

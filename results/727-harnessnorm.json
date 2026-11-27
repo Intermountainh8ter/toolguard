@@ -1,0 +1,32 @@
+{
+  "backslash_rate": 0.7,
+  "catalog": "shell-and-filesystem",
+  "catalog_sha256": "f34953072d6323e287f114183a9b633dce5d29be704610a3b62d71083c88ebcc",
+  "n": 1000,
+  "passthrough": {
+    "changed_calls": 0,
+    "semantic_change_rate": 0.0
+  },
+  "provenance": {
+    "command": "cargo run --locked -q --release -- harnessnorm --seed 7 --n 1000 --out results/727-harnessnorm.json",
+    "data_sources": [
+      {
+        "license": "MIT",
+        "url": "synthetic: seeded generator, author-written calls"
+      }
+    ],
+    "hardware": "linux x86_64 cpu, no gpu",
+    "seeds": [
+      7
+    ],
+    "started_at": "2026-11-27T22:28:51Z",
+    "wall_s": 0.00047637
+  },
+  "schema": "toolguard.harnessnorm/1",
+  "transform": {
+    "changed_calls": 694,
+    "changed_rate": 0.694,
+    "silent_changed_calls": 500,
+    "silent_semantic_change_rate": 0.7204610951008645
+  }
+}

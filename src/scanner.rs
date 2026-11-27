@@ -121,7 +121,7 @@ pub fn run(n: usize, seed: u64) -> Value {
     })
 }
 
-fn utc_now() -> String {
+pub(crate) fn utc_now() -> String {
     let secs = std::time::SystemTime::now()
         .duration_since(std::time::UNIX_EPOCH)
         .map(|d| d.as_secs() as i64)
