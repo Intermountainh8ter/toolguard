@@ -1,0 +1,27 @@
+{
+  "catalog": "shell-and-filesystem",
+  "catalog_sha256": "f34953072d6323e287f114183a9b633dce5d29be704610a3b62d71083c88ebcc",
+  "provenance": {
+    "command": "cargo run --locked -q --release -- rewrite --catalog shell-and-filesystem --seed 7 --n 1000 --out results/652-rewrite.json",
+    "data_sources": [
+      {
+        "license": "MIT",
+        "url": "https://github.com/Intermountainh8ter/toolguard (built-in shell-and-filesystem catalog)"
+      }
+    ],
+    "hardware": "linux x86_64 cpu, no gpu",
+    "seeds": [
+      7
+    ],
+    "started_at": "2026-11-27T15:23:10Z",
+    "wall_s": 0.000178703
+  },
+  "rewrite": {
+    "arg_gate_false_block_rate": 0.0,
+    "arg_gate_pass_share": 0.0,
+    "n": 1000,
+    "name_gate_false_block_rate": 0.302,
+    "name_gate_pass_share": 0.698
+  },
+  "schema": "toolguard.rewrite/1"
+}

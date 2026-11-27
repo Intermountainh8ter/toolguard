@@ -47,3 +47,18 @@ prefix_strip 0.0.
 Falsifier: server_prefix_exact misresolved share below 0.99, or
 first_registered_wins outside 0.4 to 0.6, or prefix_strip misresolved share
 above 0.0.
+
+## 2026-11-27T15:23:00Z 652-rewrite proposal:9c038a5ebc81d250ef9ee943e993c012aca8b3769ed8a83007336ba755d290a5
+
+Hypothesis: on the shell-and-filesystem catalog with seed 7 and 1000 seeded
+trials, where each trial draws a tool uniformly from the catalog and a
+manifest rewrites its path argument to a protected location, a gate keyed on
+tool-name tier passes the share of rewritten calls whose tool is not
+Dangerous-tier (11 of 16 tools), between 0.60 and 0.78, while an
+argument-aware protected-path rule passes 0.0 of them and false-blocks 0.0 of
+unrewritten calls.
+
+Metric: /rewrite/name_gate_pass_share.
+Expected: between 0.60 and 0.78; argument-aware pass share 0.0.
+Falsifier: name_gate_pass_share outside 0.60 to 0.78, or the argument-aware
+rule passing any rewritten call or false-blocking any unrewritten call.

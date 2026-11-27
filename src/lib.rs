@@ -10,6 +10,7 @@
 
 pub mod evasion;
 pub mod importers;
+pub mod rewrite;
 pub mod spoof;
 
 use rand::SeedableRng;

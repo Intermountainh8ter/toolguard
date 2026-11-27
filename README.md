@@ -58,6 +58,14 @@ measures it.
   prefix-stripping misresolves 0.0 but false-blocks the spoofing server's
   Benign calls at 1.0. The outcomes follow from the rule definitions; this
   bounds the harness, not any deployed client.
+- `toolguard rewrite`: model-free argument-rewrite run. Result
+  `results/652-rewrite.json` (shell-and-filesystem, seed 7, n=1000): a gate
+  keyed on tool-name tier passes 0.698 of calls whose path argument was
+  rewritten to a protected location (`/rewrite/name_gate_pass_share`), an
+  argument-aware protected-path rule passes 0.0, and the name gate blocks
+  0.302 of unrewritten calls. The tool mix is a uniform draw over the catalog
+  and the paths are author-written; this bounds the harness, not any deployed
+  gate.
 - `docs/PREREGISTRATION.md` with the thresholds locked.
 
 Not in this commit (openly tracked):
