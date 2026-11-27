@@ -29,3 +29,21 @@ Expected: between 0.4 and 0.6; reject-on-collision 0.0.
 Falsifier: first-match spoof success outside 0.4 to 0.6, or reject-on-collision
 spoof success above 0.0, or reject-on-collision false-block rate on benign
 duplicates equal to 0.0.
+
+## 2026-11-27T11:13:30Z 651-spoof-rules proposal:5b84f3b50519663b6121beeefc0db0d12728c9b1a2910210df839e1d02242519
+
+Hypothesis: on the shell-and-filesystem catalog with seed 7 and 1000 seeded
+trials per rule, where a spoofing server registers a Benign tool under a
+Dangerous tool's name before or after the genuine server with equal
+probability, bare-name first-registered-wins assigns the wrong tier to between
+0.4 and 0.6 of Dangerous calls, server-prefixed names with an exact catalog
+lookup assign the wrong tier to 1.0 of them (unknown names fail open as
+Benign), and prefix-stripping lookup assigns the wrong tier to 0.0 of genuine
+calls but false-blocks the spoofing server's Benign calls at a rate of 1.0.
+
+Metric: /by_rule/server_prefix_exact/misresolved_share.
+Expected: 1.0 (range 0.99 to 1.0); first_registered_wins between 0.4 and 0.6;
+prefix_strip 0.0.
+Falsifier: server_prefix_exact misresolved share below 0.99, or
+first_registered_wins outside 0.4 to 0.6, or prefix_strip misresolved share
+above 0.0.

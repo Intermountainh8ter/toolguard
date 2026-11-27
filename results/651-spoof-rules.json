@@ -1,0 +1,37 @@
+{
+  "by_rule": {
+    "first_registered_wins": {
+      "false_block_rate": 0.519,
+      "misresolved_share": 0.481,
+      "n": 1000
+    },
+    "prefix_strip": {
+      "false_block_rate": 1.0,
+      "misresolved_share": 0.0,
+      "n": 1000
+    },
+    "server_prefix_exact": {
+      "false_block_rate": 0.0,
+      "misresolved_share": 1.0,
+      "n": 1000
+    }
+  },
+  "catalog": "shell-and-filesystem",
+  "catalog_sha256": "f34953072d6323e287f114183a9b633dce5d29be704610a3b62d71083c88ebcc",
+  "provenance": {
+    "command": "cargo run --locked -q --release -- spoof-rules --catalog shell-and-filesystem --seed 7 --n 1000 --out results/651-spoof-rules.json",
+    "data_sources": [
+      {
+        "license": "MIT",
+        "url": "https://github.com/Intermountainh8ter/toolguard (built-in shell-and-filesystem catalog)"
+      }
+    ],
+    "hardware": "linux x86_64 cpu, no gpu",
+    "seeds": [
+      7
+    ],
+    "started_at": "2026-11-27T11:13:30Z",
+    "wall_s": 0.000137348
+  },
+  "schema": "toolguard.spoof_rules/1"
+}

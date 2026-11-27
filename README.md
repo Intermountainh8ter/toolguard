@@ -50,6 +50,14 @@ measures it.
   reject-on-collision 0.0 with a benign duplicate false-block rate of 1.0.
   Registration order is a seeded coin flip, so the first/last split is set by
   construction; this bounds the harness, not any deployed gate.
+- `toolguard spoof-rules`: model-free client name-resolution run. Result
+  `results/651-spoof-rules.json` (shell-and-filesystem, seed 7, n=1000 per
+  rule): bare-name first-registered-wins misresolves 0.481 of Dangerous calls
+  (`/by_rule/first_registered_wins/misresolved_share`), server-prefixed names
+  with an exact lookup misresolve 1.0 (unknown names fail open as Benign),
+  prefix-stripping misresolves 0.0 but false-blocks the spoofing server's
+  Benign calls at 1.0. The outcomes follow from the rule definitions; this
+  bounds the harness, not any deployed client.
 - `docs/PREREGISTRATION.md` with the thresholds locked.
 
 Not in this commit (openly tracked):
