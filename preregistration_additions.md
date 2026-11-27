@@ -118,3 +118,20 @@ Expected: between 0.18 and 0.26 at n=1000 seed 7; deterministic-type
 recovery exactly 0.0.
 Falsifier: recovery_rate_bounded outside 0.18 to 0.26, or any deterministic
 schema error type recovered by identical resend at a rate above 0.0.
+
+## 2026-11-27T23:00:05Z 735-repairpolicy proposal:97611852154178134dc6900abff9abe1bb23e1261776cdbe6697060a1503e094
+
+Hypothesis: on 1000 seeded synthetic shell-and-filesystem calls (seed 7), of
+which a fixed author-written share are valid and the rest are near-valid in
+one of four ways (string for integer, extra unknown argument, missing
+required argument, wrong-case tool name), an author-written permissive repair
+policy executes malformed calls (coerced, dropped or defaulted, altering
+intent) at a rate of at least 0.5 of malformed calls, while the strict policy
+executes 0.0 of them and its valid-call false-reject rate is 0.0. A
+retry-once-then-strict policy is also scored; identical resend of a
+deterministic malformation cannot succeed.
+
+Metric: /policies/permissive/executed_malformed_rate.
+Expected: at least 0.5 (range 0.5 to 1.0); strict exactly 0.0.
+Falsifier: permissive executed_malformed_rate below 0.5 on the seeded run, or
+strict executing any malformed call, or strict false-rejecting any valid call.

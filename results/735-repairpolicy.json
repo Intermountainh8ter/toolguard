@@ -1,0 +1,109 @@
+{
+  "coercible_probability": 0.7,
+  "malformed": 780,
+  "n": 1000,
+  "policies": {
+    "permissive": {
+      "by_kind": {
+        "extra_unknown_arg": {
+          "executed": 172,
+          "executed_rate": 1.0,
+          "malformed": 172
+        },
+        "missing_required_arg": {
+          "executed": 183,
+          "executed_rate": 1.0,
+          "malformed": 183
+        },
+        "string_for_integer": {
+          "executed": 149,
+          "executed_rate": 0.7028301886792453,
+          "malformed": 212
+        },
+        "wrong_case_tool_name": {
+          "executed": 213,
+          "executed_rate": 1.0,
+          "malformed": 213
+        }
+      },
+      "executed_malformed": 717,
+      "executed_malformed_rate": 0.9192307692307692,
+      "valid_executed": 220,
+      "valid_false_reject_rate": 0.0
+    },
+    "retry_then_strict": {
+      "by_kind": {
+        "extra_unknown_arg": {
+          "executed": 0,
+          "executed_rate": 0.0,
+          "malformed": 172
+        },
+        "missing_required_arg": {
+          "executed": 0,
+          "executed_rate": 0.0,
+          "malformed": 183
+        },
+        "string_for_integer": {
+          "executed": 0,
+          "executed_rate": 0.0,
+          "malformed": 212
+        },
+        "wrong_case_tool_name": {
+          "executed": 0,
+          "executed_rate": 0.0,
+          "malformed": 213
+        }
+      },
+      "executed_malformed": 0,
+      "executed_malformed_rate": 0.0,
+      "valid_executed": 220,
+      "valid_false_reject_rate": 0.0
+    },
+    "strict": {
+      "by_kind": {
+        "extra_unknown_arg": {
+          "executed": 0,
+          "executed_rate": 0.0,
+          "malformed": 172
+        },
+        "missing_required_arg": {
+          "executed": 0,
+          "executed_rate": 0.0,
+          "malformed": 183
+        },
+        "string_for_integer": {
+          "executed": 0,
+          "executed_rate": 0.0,
+          "malformed": 212
+        },
+        "wrong_case_tool_name": {
+          "executed": 0,
+          "executed_rate": 0.0,
+          "malformed": 213
+        }
+      },
+      "executed_malformed": 0,
+      "executed_malformed_rate": 0.0,
+      "valid_executed": 220,
+      "valid_false_reject_rate": 0.0
+    }
+  },
+  "provenance": {
+    "command": "cargo run --locked -q --release -- repairpolicy --seed 7 --n 1000 --out results/735-repairpolicy.json",
+    "data_sources": [
+      {
+        "license": "MIT",
+        "url": "synthetic: seeded generator, author-written malformations"
+      }
+    ],
+    "hardware": "linux x86_64 cpu, no gpu",
+    "seeds": [
+      7
+    ],
+    "started_at": "2026-11-27T23:00:10Z",
+    "wall_s": 0.000414748
+  },
+  "schema": "toolguard.repairpolicy/1",
+  "valid": 220,
+  "valid_share": 0.2
+}

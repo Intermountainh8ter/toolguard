@@ -81,6 +81,14 @@ measures it.
   deterministic schema errors (`/retry_floor/deterministic_recovered`);
   never-retry recovers 0.0. The clearing probability is author-set; this
   bounds the harness, not any deployed agent.
+- `toolguard repairpolicy`: model-free malformed-call repair run. Result
+  `results/735-repairpolicy.json` (seed 7, n=1000, 780 malformed): the
+  author-written permissive repair policy executes 0.919 of malformed calls
+  (`/policies/permissive/executed_malformed_rate`), strict and
+  retry-once-then-strict execute 0.0, and the false-reject rate on valid calls
+  is 0.0 for both. The malformations and the repair rules are author-written,
+  so the outcome follows from the definitions; this bounds the harness, not any
+  deployed validator.
 - `toolguard harnessnorm`: model-free harness-normalisation run. Result
   `results/727-harnessnorm.json` (shell-and-filesystem, seed 7, n=1000): an
   author-written unescape-and-trim normaliser changes 0.694 of calls
