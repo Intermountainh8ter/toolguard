@@ -8,6 +8,7 @@
 //! integrity guard: at least three Dangerous-tier tools or the audit
 //! refuses to run.
 
+pub mod evasion;
 pub mod importers;
 
 use rand::SeedableRng;

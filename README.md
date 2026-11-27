@@ -36,6 +36,13 @@ measures it.
 - CLI: `toolguard score` (back-compat), `toolguard audit`, and
   `toolguard catalog <name>` to dump a built-in. Exit codes: 0 safe,
   1 unsafe, 2 catalog refused.
+- `toolguard evasion`: model-free encoding-evasion run. Result
+  `results/644-evasion.json` (shell-and-filesystem, seed 7, n=1000 per
+  encoding): on mixed encodings the exact-match resolver blocks 0.0 of
+  Dangerous calls (`/evasion/mixed/block_rate`) and the normalising resolver
+  blocks 1.0, with benign false-block rate 0.0 for both. Renderings are
+  author-written and the normaliser is built to invert them, so this bounds
+  the harness, not any deployed validator.
 - `docs/PREREGISTRATION.md` with the thresholds locked.
 
 Not in this commit (openly tracked):

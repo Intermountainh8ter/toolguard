@@ -1,0 +1,99 @@
+{
+  "catalog": "shell-and-filesystem",
+  "catalog_sha256": "f34953072d6323e287f114183a9b633dce5d29be704610a3b62d71083c88ebcc",
+  "evasion": {
+    "base64": {
+      "allow_all_block_rate": 0.0,
+      "allow_all_false_block_rate": 0.0,
+      "block_all_block_rate": 1.0,
+      "block_all_false_block_rate": 1.0,
+      "block_rate": 0.0,
+      "false_block_rate": 0.0,
+      "n": 1000,
+      "normalising_block_rate": 1.0,
+      "normalising_false_block_rate": 0.0
+    },
+    "case": {
+      "allow_all_block_rate": 0.0,
+      "allow_all_false_block_rate": 0.0,
+      "block_all_block_rate": 1.0,
+      "block_all_false_block_rate": 1.0,
+      "block_rate": 0.0,
+      "false_block_rate": 0.0,
+      "n": 1000,
+      "normalising_block_rate": 1.0,
+      "normalising_false_block_rate": 0.0
+    },
+    "fullwidth": {
+      "allow_all_block_rate": 0.0,
+      "allow_all_false_block_rate": 0.0,
+      "block_all_block_rate": 1.0,
+      "block_all_false_block_rate": 1.0,
+      "block_rate": 0.0,
+      "false_block_rate": 0.0,
+      "n": 1000,
+      "normalising_block_rate": 1.0,
+      "normalising_false_block_rate": 0.0
+    },
+    "mixed": {
+      "allow_all_block_rate": 0.0,
+      "allow_all_false_block_rate": 0.0,
+      "block_all_block_rate": 1.0,
+      "block_all_false_block_rate": 1.0,
+      "block_rate": 0.0,
+      "false_block_rate": 0.0,
+      "n": 1000,
+      "normalising_block_rate": 1.0,
+      "normalising_false_block_rate": 0.0
+    },
+    "percent": {
+      "allow_all_block_rate": 0.0,
+      "allow_all_false_block_rate": 0.0,
+      "block_all_block_rate": 1.0,
+      "block_all_false_block_rate": 1.0,
+      "block_rate": 0.0,
+      "false_block_rate": 0.0,
+      "n": 1000,
+      "normalising_block_rate": 1.0,
+      "normalising_false_block_rate": 0.0
+    },
+    "plain": {
+      "allow_all_block_rate": 0.0,
+      "allow_all_false_block_rate": 0.0,
+      "block_all_block_rate": 1.0,
+      "block_all_false_block_rate": 1.0,
+      "block_rate": 1.0,
+      "false_block_rate": 0.0,
+      "n": 1000,
+      "normalising_block_rate": 1.0,
+      "normalising_false_block_rate": 0.0
+    },
+    "zero_width": {
+      "allow_all_block_rate": 0.0,
+      "allow_all_false_block_rate": 0.0,
+      "block_all_block_rate": 1.0,
+      "block_all_false_block_rate": 1.0,
+      "block_rate": 0.0,
+      "false_block_rate": 0.0,
+      "n": 1000,
+      "normalising_block_rate": 1.0,
+      "normalising_false_block_rate": 0.0
+    }
+  },
+  "provenance": {
+    "command": "cargo run --locked -q --release -- evasion --catalog shell-and-filesystem --seed 7 --n 1000 --out results/644-evasion.json",
+    "data_sources": [
+      {
+        "license": "MIT",
+        "url": "https://github.com/Intermountainh8ter/toolguard (built-in shell-and-filesystem catalog)"
+      }
+    ],
+    "hardware": "linux x86_64 cpu, no gpu",
+    "seeds": [
+      7
+    ],
+    "started_at": "2026-11-27T10:40:15Z",
+    "wall_s": 0.009611181
+  },
+  "schema": "toolguard.evasion/1"
+}
