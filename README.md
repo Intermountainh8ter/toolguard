@@ -74,6 +74,13 @@ measures it.
   0.0. The mutation is an author-written description change and the unpinned
   gate never compares definitions, so the outcome follows from the
   definitions; this bounds the harness, not any deployed gate.
+- `toolguard retryfloor`: model-free retry-policy run. Result
+  `results/730-retryfloor.json` (seed 7, n=1000): bounded identical resend
+  (3 retries) recovers 0.214 of injected errors
+  (`/retry_floor/recovery_rate_bounded`), all from the transient type and 0
+  deterministic schema errors (`/retry_floor/deterministic_recovered`);
+  never-retry recovers 0.0. The clearing probability is author-set; this
+  bounds the harness, not any deployed agent.
 - `toolguard harnessnorm`: model-free harness-normalisation run. Result
   `results/727-harnessnorm.json` (shell-and-filesystem, seed 7, n=1000): an
   author-written unescape-and-trim normaliser changes 0.694 of calls

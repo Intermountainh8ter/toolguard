@@ -1,0 +1,52 @@
+{
+  "max_retries": 3,
+  "n": 1000,
+  "provenance": {
+    "command": "cargo run --locked -q --release -- retryfloor --seed 7 --n 1000 --out results/730-retryfloor.json",
+    "data_sources": [
+      {
+        "license": "MIT",
+        "url": "synthetic: seeded generator, author-written errors"
+      }
+    ],
+    "hardware": "linux x86_64 cpu, no gpu",
+    "seeds": [
+      7
+    ],
+    "started_at": "2026-11-27T22:41:06Z",
+    "wall_s": 0.000030707
+  },
+  "retry_floor": {
+    "by_type": {
+      "missing_required_arg": {
+        "bounded_recovered": 0,
+        "bounded_recovery_rate": 0.0,
+        "injected": 307,
+        "never_retry_recovered": 0
+      },
+      "transient_timeout": {
+        "bounded_recovered": 214,
+        "bounded_recovery_rate": 0.8359375,
+        "injected": 256,
+        "never_retry_recovered": 0
+      },
+      "unknown_tool": {
+        "bounded_recovered": 0,
+        "bounded_recovery_rate": 0.0,
+        "injected": 227,
+        "never_retry_recovered": 0
+      },
+      "wrong_arg_type": {
+        "bounded_recovered": 0,
+        "bounded_recovery_rate": 0.0,
+        "injected": 210,
+        "never_retry_recovered": 0
+      }
+    },
+    "deterministic_recovered": 0,
+    "recovery_rate_bounded": 0.214,
+    "recovery_rate_never_retry": 0.0
+  },
+  "schema": "toolguard.retryfloor/1",
+  "transient_clear_probability": 0.5
+}

@@ -103,3 +103,18 @@ Metric: /transform/silent_semantic_change_rate.
 Expected: at least 0.5 (range 0.5 to 1.0); pass-through change rate 0.0.
 Falsifier: silent_semantic_change_rate below 0.5 on the seeded run, or a
 non-zero pass-through change rate.
+
+## 2026-11-27T22:41:01Z 730-retryfloor proposal:bbd1790f73e26102267202949f961212c4a9c2ea9d8ca7413aa337782ebfb600
+
+Hypothesis: with injected errors drawn uniformly over four types (missing
+required argument, wrong argument type, unknown tool, transient timeout) and
+transient errors clearing with probability 0.5 per attempt, a bounded
+identical-resend policy (3 retries) recovers a share of injected errors near
+0.219 overall, all of it from the transient type, while recovering 0.0 of the
+three deterministic schema error types; never-retry recovers 0.0.
+
+Metric: /retry_floor/recovery_rate_bounded.
+Expected: between 0.18 and 0.26 at n=1000 seed 7; deterministic-type
+recovery exactly 0.0.
+Falsifier: recovery_rate_bounded outside 0.18 to 0.26, or any deterministic
+schema error type recovered by identical resend at a rate above 0.0.

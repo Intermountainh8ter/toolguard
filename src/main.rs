@@ -122,6 +122,15 @@ enum Cmd {
         #[arg(long)]
         out: std::path::PathBuf,
     },
+    /// Model-free retry-policy floor: never-retry vs bounded identical resend.
+    Retryfloor {
+        #[arg(long, default_value_t = 7)]
+        seed: u64,
+        #[arg(long, default_value_t = 1000)]
+        n: usize,
+        #[arg(long)]
+        out: std::path::PathBuf,
+    },
     /// Model-free description-scanner floor: flag-all, flag-none and a
     /// trigger-phrase scanner on a seeded synthetic corpus.
     Scanner {
@@ -471,6 +480,7 @@ fn main() -> anyhow::Result<()> {
         Cmd::Harnessnorm { seed, n, out } => {
             toolguard::harnessnorm::write_report(&shell_and_filesystem(), n, seed, &out)?
         }
+        Cmd::Retryfloor { seed, n, out } => toolguard::retryfloor::write_report(n, seed, &out)?,
         Cmd::Scanner { seed, n, out } => toolguard::scanner::write_report(n, seed, &out)?,
         Cmd::Version => println!("toolguard {}", env!("CARGO_PKG_VERSION")),
     }

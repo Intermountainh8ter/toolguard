@@ -11,6 +11,7 @@
 pub mod evasion;
 pub mod harnessnorm;
 pub mod importers;
+pub mod retryfloor;
 pub mod rewrite;
 pub mod rugpull;
 pub mod scanner;
