@@ -1,0 +1,47 @@
+{
+  "catalog": "shell-and-filesystem",
+  "catalog_sha256": "f34953072d6323e287f114183a9b633dce5d29be704610a3b62d71083c88ebcc",
+  "policies": {
+    "allow_all": {
+      "false_block_rate": 0.0,
+      "n": 1000,
+      "spoof_success_rate": 1.0
+    },
+    "block_all": {
+      "false_block_rate": 1.0,
+      "n": 1000,
+      "spoof_success_rate": 0.0
+    },
+    "first_match": {
+      "false_block_rate": 0.0,
+      "n": 1000,
+      "spoof_success_rate": 0.518
+    },
+    "last_match": {
+      "false_block_rate": 0.0,
+      "n": 1000,
+      "spoof_success_rate": 0.482
+    },
+    "reject_on_collision": {
+      "false_block_rate": 1.0,
+      "n": 1000,
+      "spoof_success_rate": 0.0
+    }
+  },
+  "provenance": {
+    "command": "cargo run --locked -q --release -- spoof --catalog shell-and-filesystem --seed 7 --n 1000 --out results/650-spoof.json",
+    "data_sources": [
+      {
+        "license": "MIT",
+        "url": "https://github.com/Intermountainh8ter/toolguard (built-in shell-and-filesystem catalog)"
+      }
+    ],
+    "hardware": "linux x86_64 cpu, no gpu",
+    "seeds": [
+      7
+    ],
+    "started_at": "2026-11-27T11:09:48Z",
+    "wall_s": 0.000134494
+  },
+  "schema": "toolguard.spoof/1"
+}

@@ -43,6 +43,13 @@ measures it.
   blocks 1.0, with benign false-block rate 0.0 for both. Renderings are
   author-written and the normaliser is built to invert them, so this bounds
   the harness, not any deployed validator.
+- `toolguard spoof`: model-free tool-name spoofing run. Result
+  `results/650-spoof.json` (shell-and-filesystem, seed 7, n=1000 per policy):
+  first-match resolution lets 0.518 of spoofed Dangerous calls through
+  (`/policies/first_match/spoof_success_rate`), last-match 0.482,
+  reject-on-collision 0.0 with a benign duplicate false-block rate of 1.0.
+  Registration order is a seeded coin flip, so the first/last split is set by
+  construction; this bounds the harness, not any deployed gate.
 - `docs/PREREGISTRATION.md` with the thresholds locked.
 
 Not in this commit (openly tracked):

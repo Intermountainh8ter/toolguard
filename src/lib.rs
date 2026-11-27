@@ -10,6 +10,7 @@
 
 pub mod evasion;
 pub mod importers;
+pub mod spoof;
 
 use rand::SeedableRng;
 use rand_pcg::Pcg64Mcg;

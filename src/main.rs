@@ -66,6 +66,18 @@ enum Cmd {
         #[arg(long)]
         out: std::path::PathBuf,
     },
+    /// Model-free tool-name spoofing run: a second server registers a
+    /// Benign tool under a Dangerous tool's name; score resolver policies.
+    Spoof {
+        #[arg(long, default_value = "shell-and-filesystem")]
+        catalog: String,
+        #[arg(long, default_value_t = 7)]
+        seed: u64,
+        #[arg(long, default_value_t = 1000)]
+        n: usize,
+        #[arg(long)]
+        out: std::path::PathBuf,
+    },
     Version,
 }
 
@@ -190,6 +202,58 @@ fn main() -> anyhow::Result<()> {
                     "started_at": started_at,
                     "seeds": [seed],
                     "command": format!("cargo run --locked -q --release -- evasion --catalog {catalog} --seed {seed} --n {n} --out {}", out.display()),
+                    "hardware": format!("{} {} cpu, no gpu", std::env::consts::OS, std::env::consts::ARCH),
+                    "wall_s": t0.elapsed().as_secs_f64(),
+                    "data_sources": [{"url": "https://github.com/Intermountainh8ter/toolguard (built-in shell-and-filesystem catalog)", "license": "MIT"}],
+                },
+            });
+            if let Some(dir) = out.parent() {
+                std::fs::create_dir_all(dir)?;
+            }
+            std::fs::write(&out, serde_json::to_string_pretty(&report)? + "\n")?;
+            println!("wrote {}", out.display());
+        }
+        Cmd::Spoof { catalog, seed, n, out } => {
+            let started = std::time::SystemTime::now();
+            let t0 = std::time::Instant::now();
+            let cat = match catalog.as_str() {
+                "shell-and-filesystem" => shell_and_filesystem(),
+                "http-and-sql" => http_and_sql(),
+                "financial-tx" => financial_tx(),
+                other => anyhow::bail!("unknown built-in catalog: {other}"),
+            };
+            let mut rows = serde_json::Map::new();
+            for p in toolguard::spoof::POLICIES {
+                let row = toolguard::spoof::run_policy(&cat, p, n, seed);
+                rows.insert(p.name().into(), serde_json::to_value(row)?);
+            }
+            let secs = started.duration_since(std::time::UNIX_EPOCH)?.as_secs() as i64;
+            let (days, rem) = (secs.div_euclid(86400), secs.rem_euclid(86400));
+            // civil-from-days (Hinnant)
+            let z = days + 719468;
+            let era = z.div_euclid(146097);
+            let doe = z.rem_euclid(146097);
+            let yoe = (doe - doe / 1460 + doe / 36524 - doe / 146096) / 365;
+            let doy = doe - (365 * yoe + yoe / 4 - yoe / 100);
+            let mp = (5 * doy + 2) / 153;
+            let d = doy - (153 * mp + 2) / 5 + 1;
+            let m = if mp < 10 { mp + 3 } else { mp - 9 };
+            let y = yoe + era * 400 + i64::from(m <= 2);
+            let started_at = format!(
+                "{y:04}-{m:02}-{d:02}T{:02}:{:02}:{:02}Z",
+                rem / 3600,
+                rem % 3600 / 60,
+                rem % 60
+            );
+            let report = serde_json::json!({
+                "schema": "toolguard.spoof/1",
+                "catalog": cat.name,
+                "catalog_sha256": toolguard::catalog_sha256(&cat),
+                "policies": rows,
+                "provenance": {
+                    "started_at": started_at,
+                    "seeds": [seed],
+                    "command": format!("cargo run --locked -q --release -- spoof --catalog {catalog} --seed {seed} --n {n} --out {}", out.display()),
                     "hardware": format!("{} {} cpu, no gpu", std::env::consts::OS, std::env::consts::ARCH),
                     "wall_s": t0.elapsed().as_secs_f64(),
                     "data_sources": [{"url": "https://github.com/Intermountainh8ter/toolguard (built-in shell-and-filesystem catalog)", "license": "MIT"}],
