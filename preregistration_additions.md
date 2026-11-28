@@ -239,3 +239,18 @@ Metric: /per_class/max_false_positive_rate.
 Expected: at least 0.5 (range 0.5 to 1.0), max-minus-min spread at least 0.25.
 Falsifier: max per-class false-positive rate below 0.5, or spread below 0.25
 at seed 7, n=1000 per class.
+
+## 2026-11-28T04:37:36Z 814-compound proposal:4b49e150093664bf838c97cdc10c137c1b38a8f06f55b7d187ec0848b8ff1a82
+
+Hypothesis: with per-episode breach probability fixed at 0.009 and 105
+episodes, the independent arm gives P(at least one breach) within 0.03 of
+0.612, while an arm with shared-state intra-fleet correlation 0.2 (per-fleet
+breach propensity drawn from a Beta with mean 0.009) gives a probability at
+least 0.10 lower, so the independence assumption overstates fleet breach risk
+when failures are correlated. Model-free simulation; parameters 0.009 and 105
+are quoted from arXiv 2609.39050, no data used.
+
+Metric: /arms/correlated_rho0.2/p_at_least_one.
+Expected: decreases to at most 0.51 (range 0.2 to 0.51).
+Falsifier: correlated arm exceeds 0.51 at the same marginal rate, or the
+independent arm falls outside 0.58 to 0.64 (seed 7, 20000 trials).

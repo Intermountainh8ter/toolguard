@@ -1,0 +1,46 @@
+{
+  "analytic_independent_p_at_least_one": 0.6129797216452528,
+  "arms": {
+    "correlated_rho0.05": {
+      "marginal_episode_rate": 0.00896904761904762,
+      "mean_breaches_per_fleet": 0.94175,
+      "p_at_least_one": 0.27335,
+      "rho": 0.05,
+      "trials": 20000
+    },
+    "correlated_rho0.2": {
+      "marginal_episode_rate": 0.008849523809523809,
+      "mean_breaches_per_fleet": 0.9292,
+      "p_at_least_one": 0.11485,
+      "rho": 0.2,
+      "trials": 20000
+    },
+    "independent": {
+      "marginal_episode_rate": 0.009042857142857142,
+      "mean_breaches_per_fleet": 0.9495,
+      "p_at_least_one": 0.6144,
+      "rho": null,
+      "trials": 20000
+    }
+  },
+  "params": {
+    "episodes": 105,
+    "p": 0.009,
+    "trials": 20000
+  },
+  "provenance": {
+    "command": "cargo run --locked -q --release -- compound --seed 7 --episodes 105 --p 0.009 --trials 20000 --out results/814-compound.json",
+    "data_sources": [
+      {
+        "license": "arXiv abstract, parameters 0.009 and 105 quoted only; no data used",
+        "url": "https://arxiv.org/abs/2609.39050"
+      }
+    ],
+    "hardware": "linux x86_64 cpu, no gpu",
+    "seeds": [
+      7
+    ],
+    "started_at": "2026-11-28T04:37:42Z",
+    "wall_s": 0.027312196
+  }
+}

@@ -215,6 +215,19 @@ enum Cmd {
         #[arg(long)]
         out: std::path::PathBuf,
     },
+    /// Model-free compounding of a per-episode breach rate, independent vs correlated.
+    Compound {
+        #[arg(long, default_value_t = 7)]
+        seed: u64,
+        #[arg(long, default_value_t = 105)]
+        episodes: usize,
+        #[arg(long, default_value_t = 0.009)]
+        p: f64,
+        #[arg(long, default_value_t = 20000)]
+        trials: usize,
+        #[arg(long)]
+        out: std::path::PathBuf,
+    },
     Version,
 }
 
@@ -563,6 +576,9 @@ fn main() -> anyhow::Result<()> {
         Cmd::ViewGap { seed, n, out } => toolguard::viewgap::write_report(n, seed, &out)?,
         Cmd::Ppvsweep { seed, n, out } => toolguard::ppvsweep::write_report(n, seed, &out)?,
         Cmd::ClassFp { seed, n, out } => toolguard::classfp::write_report(n, seed, &out)?,
+        Cmd::Compound { seed, episodes, p, trials, out } => {
+            toolguard::compound::write_report(seed, episodes, p, trials, &out)?
+        }
         Cmd::Version => println!("toolguard {}", env!("CARGO_PKG_VERSION")),
     }
     Ok(())

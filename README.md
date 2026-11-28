@@ -74,6 +74,16 @@ measures it.
   0.0. The mutation is an author-written description change and the unpinned
   gate never compares definitions, so the outcome follows from the
   definitions; this bounds the harness, not any deployed gate.
+- `toolguard compound`: model-free compounding run. Result
+  `results/814-compound.json` (seed 7, 105 episodes, p 0.009, 20000 trials):
+  independent episodes give P(at least one breach) 0.6144
+  (`/arms/independent/p_at_least_one`), a shared per-fleet Beta propensity at
+  intra-fleet correlation 0.2 gives 0.11485
+  (`/arms/correlated_rho0.2/p_at_least_one`), and 0.05 gives 0.27335. The
+  correlated value is below the pre-registered range of 0.2 to 0.51 (the
+  direction and the at-most-0.51 bound held). Same marginal rate, so this
+  shows the independence assumption's sensitivity; it bounds the harness, not
+  any deployed gate.
 - `toolguard class-fp`: model-free per-detector-class false-positive run. Result
   `results/807-classfp.json` (seed 7, n=1000 per class): on author-written
   benign near-miss descriptions the trigger-phrase scanner's false-positive
