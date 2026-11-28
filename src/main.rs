@@ -171,6 +171,20 @@ enum Cmd {
         #[arg(long)]
         out: std::path::PathBuf,
     },
+    /// Model-free tier-label-noise run: adjacent and random flips of tool
+    /// tier labels against a tier-based gate.
+    Labelnoise {
+        #[arg(long, default_value_t = 7)]
+        seed: u64,
+        #[arg(long, default_value_t = 1000)]
+        n: usize,
+        #[arg(long, default_value_t = 0.4)]
+        p: f64,
+        #[arg(long, default_value_t = 0.1)]
+        q: f64,
+        #[arg(long)]
+        out: std::path::PathBuf,
+    },
     /// Model-free scanner PPV-versus-prevalence simulation.
     Ppvsweep {
         #[arg(long, default_value_t = 7)]
@@ -524,6 +538,7 @@ fn main() -> anyhow::Result<()> {
         Cmd::Scanner { seed, n, out } => toolguard::scanner::write_report(n, seed, &out)?,
         Cmd::Pinsim { seed, n, out } => toolguard::pinsim::write_report(n, seed, &out)?,
         Cmd::Pincoverage { seed, n, out } => toolguard::pincoverage::write_report(n, seed, &out)?,
+        Cmd::Labelnoise { seed, n, p, q, out } => toolguard::labelnoise::write_report(n, seed, p, q, &out)?,
         Cmd::Ppvsweep { seed, n, out } => toolguard::ppvsweep::write_report(n, seed, &out)?,
         Cmd::Version => println!("toolguard {}", env!("CARGO_PKG_VERSION")),
     }

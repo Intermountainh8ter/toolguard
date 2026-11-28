@@ -185,3 +185,21 @@ Expected: between 0.20 and 0.30; name-only 0.0; full pin 1.0.
 Falsifier: description-only detect rate outside 0.20 to 0.30 at seed 7 n=1000,
 or name-only above 0.0, or full-definition pin below 1.0, or any unmutated
 definition flagged by the full pin.
+
+## 2026-11-28T02:59:02Z 791-labelnoise proposal:354369fbe2b90d4028fa4b8bdcdb293579490c4850f0a67bb5cdc97fef452699
+
+Hypothesis: on the shell-and-filesystem catalog with seed 7 and 1000 trials,
+adjacent-tier label flips with p=0.4 (the raw disagreement implied by 60%
+agreement) leave a measurable share of Dangerous tools labelled below
+Dangerous: the mean fraction of Dangerous tools mislabelled below the gate
+threshold is between 0.35 and 0.45, because Dangerous has a single adjacent
+tier (Caution), so every adjacent flip demotes it. A second arm replaces a
+label with a uniform random tier with probability q=0.1 and is reported
+without a pre-registered range. Flips are seeded Bernoulli draws, so the
+result follows from p and the catalog; this bounds the harness, not any
+deployed gate.
+
+Metric: /label_noise/dangerous_below_threshold_fraction_adjacent.
+Expected: between 0.35 and 0.45.
+Falsifier: the measured mean fraction of Dangerous tools labelled below
+Dangerous at p=0.4 falls outside 0.35 to 0.45.

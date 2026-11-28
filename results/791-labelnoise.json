@@ -1,0 +1,31 @@
+{
+  "label_noise": {
+    "dangerous_below_threshold_fraction_adjacent": 0.4132,
+    "dangerous_below_threshold_fraction_random": 0.061,
+    "non_dangerous_labelled_dangerous_fraction_adjacent": 0.09418181818181819,
+    "non_dangerous_labelled_dangerous_fraction_random": 0.03654545454545455
+  },
+  "population": {
+    "catalog": "shell-and-filesystem",
+    "n": 1000,
+    "p_adjacent": 0.4,
+    "q_random": 0.1,
+    "tools": 16
+  },
+  "provenance": {
+    "command": "cargo run --locked -q --release -- labelnoise --seed 7 --n 1000 --p 0.4 --q 0.1 --out results/791-labelnoise.json",
+    "data_sources": [
+      {
+        "license": "MIT",
+        "url": "synthetic: seeded generator, no external data"
+      }
+    ],
+    "hardware": "linux x86_64 cpu, no gpu",
+    "seeds": [
+      7
+    ],
+    "started_at": "2026-11-28T02:59:08Z",
+    "wall_s": 0.000453346
+  },
+  "schema": "toolguard.labelnoise/1"
+}

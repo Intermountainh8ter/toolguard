@@ -74,6 +74,13 @@ measures it.
   0.0. The mutation is an author-written description change and the unpinned
   gate never compares definitions, so the outcome follows from the
   definitions; this bounds the harness, not any deployed gate.
+- `toolguard labelnoise`: model-free tier-label-noise run. Result
+  `results/791-labelnoise.json` (shell-and-filesystem, seed 7, n=1000): with
+  adjacent-tier flips at p=0.4, 0.4132 of Dangerous tools are labelled below
+  Dangerous (`/label_noise/dangerous_below_threshold_fraction_adjacent`); with
+  random-tier replacement at q=0.1, 0.061. Flips are seeded Bernoulli draws, so
+  the result follows from p, q and the catalog; this bounds the harness, not
+  any deployed gate.
 - `toolguard pincoverage`: model-free pin-coverage run. Result
   `results/781-pincoverage.json` (seed 7, n=1000, one mutated field per
   definition): a description-only pin detects 0.257 of mutations
