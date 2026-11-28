@@ -1,0 +1,54 @@
+{
+  "benign_reformat": {
+    "n": 1000,
+    "pin_false_alarm_rate": 0.0,
+    "rendered_diff_false_alarm_rate": 0.0
+  },
+  "classes": {
+    "annotation_flip": {
+      "n": 1000,
+      "pin_detection_rate": 1.0,
+      "rendered_diff_detection_rate": 0.0
+    },
+    "key_reorder": {
+      "n": 1000,
+      "pin_detection_rate": 0.0,
+      "rendered_diff_detection_rate": 0.0
+    },
+    "tag_block": {
+      "n": 1000,
+      "pin_detection_rate": 1.0,
+      "rendered_diff_detection_rate": 0.0
+    },
+    "visible_edit": {
+      "n": 1000,
+      "pin_detection_rate": 1.0,
+      "rendered_diff_detection_rate": 1.0
+    },
+    "zero_width": {
+      "n": 1000,
+      "pin_detection_rate": 1.0,
+      "rendered_diff_detection_rate": 0.0
+    }
+  },
+  "population": {
+    "catalog": "shell-and-filesystem",
+    "n": 1000
+  },
+  "provenance": {
+    "command": "cargo run --locked -q --release -- view-gap --seed 7 --n 1000 --out results/799-view-gap.json",
+    "data_sources": [
+      {
+        "license": "MIT",
+        "url": "synthetic: seeded generator, no external data"
+      }
+    ],
+    "hardware": "linux x86_64 cpu, no gpu",
+    "seeds": [
+      7
+    ],
+    "started_at": "2026-11-28T03:41:15Z",
+    "wall_s": 0.049735336
+  },
+  "schema": "toolguard.viewgap/1"
+}

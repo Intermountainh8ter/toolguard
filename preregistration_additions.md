@@ -203,3 +203,22 @@ Metric: /label_noise/dangerous_below_threshold_fraction_adjacent.
 Expected: between 0.35 and 0.45.
 Falsifier: the measured mean fraction of Dangerous tools labelled below
 Dangerous at p=0.4 falls outside 0.35 to 0.45.
+
+## 2026-11-28T03:40:30Z 799-view-gap proposal:e1a20edf79ef4c3838ef9f2c813fe9c497a0c20e2849e091ae485a5dcc341cfe
+
+Hypothesis: on seeded synthetic tool definitions, a rendered-text-diff
+approval view detects 0.0 of TAG-block (U+E0000 range) and zero-width
+insertions, while a SHA-256 pin over canonical definition bytes detects 1.0 of
+them, and the pin's false-alarm rate on benign whitespace and key-order
+reformatting is 0.0. Mutation classes: visible edit, zero-width insertion,
+TAG-block insertion, schema key reorder, annotation flip. A key reorder is
+benign for a canonical-JSON pin and is reported as a false-alarm arm. The
+rendered view is modelled as the text with invisible code points removed, so
+the outcome follows from the definitions; this bounds the harness, not any
+deployed client.
+
+Metric: /classes/tag_block/pin_detection_rate.
+Expected: 1.0 (range 1.0 to 1.0); rendered-diff detection 0.0.
+Falsifier: pin detection below 1.0 on TAG-block mutations, rendered-diff
+detection above 0.0 on them, or pin false-alarm above 0.0 on benign
+reformatting.

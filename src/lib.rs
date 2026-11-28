@@ -21,6 +21,7 @@ pub mod rewrite;
 pub mod rugpull;
 pub mod scanner;
 pub mod spoof;
+pub mod viewgap;
 
 use rand::SeedableRng;
 use rand_pcg::Pcg64Mcg;

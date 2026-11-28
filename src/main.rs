@@ -185,6 +185,17 @@ enum Cmd {
         #[arg(long)]
         out: std::path::PathBuf,
     },
+    /// Model-free approval-view gap run: rendered-text diff vs canonical
+    /// definition pin across metadata mutation classes.
+    #[command(name = "view-gap")]
+    ViewGap {
+        #[arg(long, default_value_t = 7)]
+        seed: u64,
+        #[arg(long, default_value_t = 1000)]
+        n: usize,
+        #[arg(long)]
+        out: std::path::PathBuf,
+    },
     /// Model-free scanner PPV-versus-prevalence simulation.
     Ppvsweep {
         #[arg(long, default_value_t = 7)]
@@ -539,6 +550,7 @@ fn main() -> anyhow::Result<()> {
         Cmd::Pinsim { seed, n, out } => toolguard::pinsim::write_report(n, seed, &out)?,
         Cmd::Pincoverage { seed, n, out } => toolguard::pincoverage::write_report(n, seed, &out)?,
         Cmd::Labelnoise { seed, n, p, q, out } => toolguard::labelnoise::write_report(n, seed, p, q, &out)?,
+        Cmd::ViewGap { seed, n, out } => toolguard::viewgap::write_report(n, seed, &out)?,
         Cmd::Ppvsweep { seed, n, out } => toolguard::ppvsweep::write_report(n, seed, &out)?,
         Cmd::Version => println!("toolguard {}", env!("CARGO_PKG_VERSION")),
     }

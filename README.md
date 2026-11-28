@@ -74,6 +74,17 @@ measures it.
   0.0. The mutation is an author-written description change and the unpinned
   gate never compares definitions, so the outcome follows from the
   definitions; this bounds the harness, not any deployed gate.
+- `toolguard view-gap`: model-free approval-view run. Result
+  `results/799-view-gap.json` (shell-and-filesystem, seed 7, n=1000 per
+  class): a rendered-text-diff view detects 0.0 of TAG-block insertions
+  (`/classes/tag_block/rendered_diff_detection_rate`) and 0.0 of zero-width
+  insertions and annotation flips, while a SHA-256 pin over canonical
+  definition bytes detects 1.0 of them (`/classes/tag_block/pin_detection_rate`)
+  and has a false-alarm rate of 0.0 on benign whitespace and key-order
+  reformatting (`/benign_reformat/pin_false_alarm_rate`). The rendered view is
+  modelled as the description with invisible code points removed, so the
+  outcome follows from the definitions; this bounds the harness, not any
+  deployed client.
 - `toolguard labelnoise`: model-free tier-label-noise run. Result
   `results/791-labelnoise.json` (shell-and-filesystem, seed 7, n=1000): with
   adjacent-tier flips at p=0.4, 0.4132 of Dangerous tools are labelled below
