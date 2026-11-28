@@ -222,3 +222,20 @@ Expected: 1.0 (range 1.0 to 1.0); rendered-diff detection 0.0.
 Falsifier: pin detection below 1.0 on TAG-block mutations, rendered-diff
 detection above 0.0 on them, or pin false-alarm above 0.0 on benign
 reformatting.
+
+## 2026-11-28T04:08:15Z 807-classfp proposal:b80a3b8dc643ab2e447a7cf9e81553bdc7fcd71557eb50e4239c12fca0e4ad3e
+
+Hypothesis: on a seeded set of 1000 author-written benign descriptions per
+detector class (each a sentence from a documentation or logging context, drawn
+from a per-class template pool, some of which reuse the class's trigger
+phrase), the existing trigger-phrase scanner's false-positive rate differs
+across the four detector classes, with the maximum per-class rate at least
+0.25 above the minimum. Phrase-level matching cannot see context, and the
+classes differ in how often benign wording reuses the phrase. The template
+pools are author-written, so the rates follow from the pool composition; this
+bounds the harness, not any deployed scanner.
+
+Metric: /per_class/max_false_positive_rate.
+Expected: at least 0.5 (range 0.5 to 1.0), max-minus-min spread at least 0.25.
+Falsifier: max per-class false-positive rate below 0.5, or spread below 0.25
+at seed 7, n=1000 per class.

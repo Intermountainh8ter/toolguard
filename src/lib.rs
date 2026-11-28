@@ -14,6 +14,7 @@ pub mod importers;
 pub mod labelnoise;
 pub mod pincoverage;
 pub mod pinsim;
+pub mod classfp;
 pub mod ppvsweep;
 pub mod repairpolicy;
 pub mod retryfloor;

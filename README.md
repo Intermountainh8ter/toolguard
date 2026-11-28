@@ -74,6 +74,13 @@ measures it.
   0.0. The mutation is an author-written description change and the unpinned
   gate never compares definitions, so the outcome follows from the
   definitions; this bounds the harness, not any deployed gate.
+- `toolguard class-fp`: model-free per-detector-class false-positive run. Result
+  `results/807-classfp.json` (seed 7, n=1000 per class): on author-written
+  benign near-miss descriptions the trigger-phrase scanner's false-positive
+  rate is 1.0 for the highest class (`/per_class/max_false_positive_rate`) and
+  0.0 for the lowest, a spread of 1.0 (`/per_class/spread`). The rates follow
+  from how many templates in each author-written pool reuse the phrase; this
+  bounds the harness, not any deployed scanner.
 - `toolguard view-gap`: model-free approval-view run. Result
   `results/799-view-gap.json` (shell-and-filesystem, seed 7, n=1000 per
   class): a rendered-text-diff view detects 0.0 of TAG-block insertions
