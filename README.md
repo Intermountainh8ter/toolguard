@@ -74,6 +74,14 @@ measures it.
   0.0. The mutation is an author-written description change and the unpinned
   gate never compares definitions, so the outcome follows from the
   definitions; this bounds the harness, not any deployed gate.
+- `toolguard malformedarg`: model-free malformed-argument run. Result
+  `results/831-malformedarg.json` (seed 7, n=1000 per class): on a uniform mix
+  of five corruption classes a lenient validator (required-key presence and
+  null only) rejects 0.4 (`/clean_rejection/lenient_rate_uniform_mix`), the
+  strict schema validator rejects 1.0 and the accept-everything audit rejects
+  0.0, with strict false-reject rate 0.0 on well-formed calls. The lenient
+  figure is two of five classes by construction; this bounds the harness, not
+  any deployed server.
 - `toolguard emptyarg`: model-free empty-argument run. Result
   `results/827-emptyarg.json` (seed 7, n=1000 per share): at an empty-argument
   share of 0.5 a gate with no required argument passes 0.516 of calls

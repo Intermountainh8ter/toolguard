@@ -205,6 +205,15 @@ enum Cmd {
         #[arg(long)]
         out: std::path::PathBuf,
     },
+    /// Model-free malformed-argument run: strict vs lenient vs accept-all validators.
+    Malformedarg {
+        #[arg(long, default_value_t = 7)]
+        seed: u64,
+        #[arg(long, default_value_t = 1000)]
+        n: usize,
+        #[arg(long)]
+        out: std::path::PathBuf,
+    },
     /// Model-free empty-argument sweep: gate with vs without a required argument.
     Emptyarg {
         #[arg(long, default_value_t = 7)]
@@ -584,6 +593,7 @@ fn main() -> anyhow::Result<()> {
         Cmd::Labelnoise { seed, n, p, q, out } => toolguard::labelnoise::write_report(n, seed, p, q, &out)?,
         Cmd::ViewGap { seed, n, out } => toolguard::viewgap::write_report(n, seed, &out)?,
         Cmd::Ppvsweep { seed, n, out } => toolguard::ppvsweep::write_report(n, seed, &out)?,
+        Cmd::Malformedarg { seed, n, out } => toolguard::malformedarg::write_report(n, seed, &out)?,
         Cmd::Emptyarg { seed, n, out } => toolguard::emptyarg::write_report(n, seed, &out)?,
         Cmd::ClassFp { seed, n, out } => toolguard::classfp::write_report(n, seed, &out)?,
         Cmd::Compound { seed, episodes, p, trials, out } => {

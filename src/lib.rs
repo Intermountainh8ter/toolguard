@@ -9,6 +9,7 @@
 //! refuses to run.
 
 pub mod emptyarg;
+pub mod malformedarg;
 pub mod evasion;
 pub mod harnessnorm;
 pub mod importers;

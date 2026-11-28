@@ -271,3 +271,20 @@ Expected: within 0.45 to 0.55; required-argument arm 0.0.
 Falsifier: no-required-argument pass rate at s=0.5 outside 0.45 to 0.55, or
 the required-argument gate passes any empty-argument call (seed 7, n=1000
 per share).
+
+## 2026-11-28T05:45:38Z 831-malformedarg proposal:c61d5b4b8164c61a10aa2c6ab4ee95a2ee26e7a98de103e09038da946f081f8f
+
+Hypothesis: with n=1000 corrupted calls per class (missing required, wrong
+type, null, extra key, out-of-range) a lenient validator that checks only
+required-key presence and null values rejects between 0.35 and 0.45 of a
+uniform mix of the five classes (two of five by construction), a strict schema
+validator rejects 1.0, an accept-everything audit rejects 0.0, and the strict
+validator's false-reject rate on well-formed calls is 0.0. Model-free; the
+outcome follows from the validator definitions, so this bounds the harness,
+not any deployed server.
+
+Metric: /clean_rejection/lenient_rate_uniform_mix.
+Expected: within 0.35 to 0.45; strict 1.0; accept-all 0.0.
+Falsifier: lenient uniform-mix rate outside 0.35 to 0.45, strict rejecting
+less than 1.0 of corrupted calls, accept-all rejecting any call, or strict
+false-reject above 0.0 on well-formed calls (seed 7, n=1000 per class).
