@@ -11,6 +11,7 @@
 pub mod evasion;
 pub mod harnessnorm;
 pub mod importers;
+pub mod pincoverage;
 pub mod pinsim;
 pub mod ppvsweep;
 pub mod repairpolicy;

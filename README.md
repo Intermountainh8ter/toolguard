@@ -74,6 +74,14 @@ measures it.
   0.0. The mutation is an author-written description change and the unpinned
   gate never compares definitions, so the outcome follows from the
   definitions; this bounds the harness, not any deployed gate.
+- `toolguard pincoverage`: model-free pin-coverage run. Result
+  `results/781-pincoverage.json` (seed 7, n=1000, one mutated field per
+  definition): a description-only pin detects 0.257 of mutations
+  (`/coverage/detect_rate_description_only_pin`), a name-only pin 0.0, a
+  full-definition SHA-256 pin 1.0, and the full pin's false-flag rate on
+  unmutated definitions is 0.0. The split follows from which fields each pin
+  hashes and the uniform field draw; this bounds the harness, not any
+  deployed scanner.
 - `toolguard pinsim`: model-free pin-on-first-approval scanner simulation.
   Result `results/763-pinsim.json` (seed 7, n=1000, 8 periods): with 0.3 of
   servers poisoned, half from first listing, a scanner that pins the schema

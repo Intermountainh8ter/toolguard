@@ -167,3 +167,21 @@ Expected: between 0.05 and 0.10.
 Falsifier: PPV at prevalence 0.01 outside 0.05 to 0.10 at seed 7 n=100000, or
 PPV at prevalence 0.05 or lower at or above 0.5, or PPV at prevalence 0.5 at
 or below 0.8.
+
+## 2026-11-28T02:19:05Z 781-pincoverage proposal:4a577364d4e4b3cb89cfa620b3ab02e33bb0d590d882cbc2273d90cc2c5c11a1
+
+Hypothesis: on 1000 seeded synthetic tool definitions (seed 7) with one
+mutation drawn uniformly over four fields (description, parameter name,
+parameter type in the input schema, annotations), a description-only pin
+detects between 0.20 and 0.30 of mutations, a name-only pin detects exactly
+0.0, a full-definition SHA-256 pin detects exactly 1.0, and the full pin's
+false-flag rate on unmutated definitions is exactly 0.0. Every mutation
+changes its field's value, so the full-pin result follows from hashing; the
+measured quantity is the field-coverage split, which is set by the uniform
+field draw.
+
+Metric: /coverage/detect_rate_description_only_pin.
+Expected: between 0.20 and 0.30; name-only 0.0; full pin 1.0.
+Falsifier: description-only detect rate outside 0.20 to 0.30 at seed 7 n=1000,
+or name-only above 0.0, or full-definition pin below 1.0, or any unmutated
+definition flagged by the full pin.
