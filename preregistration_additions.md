@@ -135,3 +135,19 @@ Metric: /policies/permissive/executed_malformed_rate.
 Expected: at least 0.5 (range 0.5 to 1.0); strict exactly 0.0.
 Falsifier: permissive executed_malformed_rate below 0.5 on the seeded run, or
 strict executing any malformed call, or strict false-rejecting any valid call.
+
+## 2026-11-28T01:09:39Z 763-pinsim proposal:bf907eadc5e56b7def3d8bd024b049803c5da5fc820863192d61434faa8c6af5
+
+Hypothesis: in a synthetic population of 1000 servers (seed 7) where 30% are
+poisoned, half of those from first listing and half at a later update, with a
+per-period update probability of 0.5 over 8 periods, a pin-on-first-approval
+scanner leaves between 0.50 and 0.60 of poisoned servers undetected (all
+from-start poisoned plus late-poisoned servers that never update), flags 0.0
+of from-start poisoned servers, and has a false-flag rate of 0.0 on clean
+servers that do not change. Poisoned counts are fixed by rounding (not drawn),
+so only the late servers' update draws vary with the seed.
+
+Metric: /pin_scanner/undetectable_fraction_at_half_poisoned_from_start.
+Expected: between 0.50 and 0.60; from-start detection exactly 0.0.
+Falsifier: undetectable fraction outside 0.50 to 0.60 at seed 7 n=1000, or any
+from-start poisoned server flagged, or any unchanged clean server flagged.

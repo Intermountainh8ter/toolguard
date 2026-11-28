@@ -151,6 +151,16 @@ enum Cmd {
         #[arg(long)]
         out: std::path::PathBuf,
     },
+    /// Model-free pin-on-first-approval scanner simulation over a synthetic
+    /// server population (clean, poisoned from start, poisoned after approval).
+    Pinsim {
+        #[arg(long, default_value_t = 7)]
+        seed: u64,
+        #[arg(long, default_value_t = 1000)]
+        n: usize,
+        #[arg(long)]
+        out: std::path::PathBuf,
+    },
     Version,
 }
 
@@ -493,6 +503,7 @@ fn main() -> anyhow::Result<()> {
         Cmd::Repairpolicy { seed, n, out } => toolguard::repairpolicy::write_report(n, seed, &out)?,
         Cmd::Retryfloor { seed, n, out } => toolguard::retryfloor::write_report(n, seed, &out)?,
         Cmd::Scanner { seed, n, out } => toolguard::scanner::write_report(n, seed, &out)?,
+        Cmd::Pinsim { seed, n, out } => toolguard::pinsim::write_report(n, seed, &out)?,
         Cmd::Version => println!("toolguard {}", env!("CARGO_PKG_VERSION")),
     }
     Ok(())

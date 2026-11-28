@@ -1,0 +1,274 @@
+{
+  "pin_scanner": {
+    "false_flag_rate_unchanged_clean": 0.0,
+    "flag_rate_changed_clean": 1.0,
+    "from_start_detection_rate": 0.0,
+    "late_detection_rate": 0.9933333333333333,
+    "undetectable_fraction_at_half_poisoned_from_start": 0.5033333333333333
+  },
+  "population": {
+    "from_start_share": 0.5,
+    "n": 1000,
+    "periods": 8,
+    "poisoned_share": 0.3,
+    "update_p": 0.5
+  },
+  "provenance": {
+    "command": "cargo run --locked -q --release -- pinsim --seed 7 --n 1000 --out results/763-pinsim.json",
+    "data_sources": [
+      {
+        "license": "MIT",
+        "url": "synthetic: seeded generator, no external data"
+      }
+    ],
+    "hardware": "linux x86_64 cpu, no gpu",
+    "seeds": [
+      7
+    ],
+    "started_at": "2026-11-28T01:10:04Z",
+    "wall_s": 0.001566921
+  },
+  "schema": "toolguard.pinsim/1",
+  "sweep": [
+    {
+      "false_flag_rate_unchanged_clean": 0.0,
+      "flag_rate_changed_clean": 1.0,
+      "from_start": 0,
+      "from_start_detection_rate": 0.0,
+      "from_start_share": 0.0,
+      "late": 300,
+      "late_detection_rate": 0.5333333333333333,
+      "poisoned": 300,
+      "undetectable_fraction": 0.4666666666666667,
+      "update_p": 0.1
+    },
+    {
+      "false_flag_rate_unchanged_clean": 0.0,
+      "flag_rate_changed_clean": 1.0,
+      "from_start": 0,
+      "from_start_detection_rate": 0.0,
+      "from_start_share": 0.0,
+      "late": 300,
+      "late_detection_rate": 0.9066666666666666,
+      "poisoned": 300,
+      "undetectable_fraction": 0.09333333333333334,
+      "update_p": 0.25
+    },
+    {
+      "false_flag_rate_unchanged_clean": 0.0,
+      "flag_rate_changed_clean": 1.0,
+      "from_start": 0,
+      "from_start_detection_rate": 0.0,
+      "from_start_share": 0.0,
+      "late": 300,
+      "late_detection_rate": 0.9766666666666667,
+      "poisoned": 300,
+      "undetectable_fraction": 0.023333333333333334,
+      "update_p": 0.5
+    },
+    {
+      "false_flag_rate_unchanged_clean": 0.0,
+      "flag_rate_changed_clean": 1.0,
+      "from_start": 0,
+      "from_start_detection_rate": 0.0,
+      "from_start_share": 0.0,
+      "late": 300,
+      "late_detection_rate": 1.0,
+      "poisoned": 300,
+      "undetectable_fraction": 0.0,
+      "update_p": 0.75
+    },
+    {
+      "false_flag_rate_unchanged_clean": 0.0,
+      "flag_rate_changed_clean": 1.0,
+      "from_start": 75,
+      "from_start_detection_rate": 0.0,
+      "from_start_share": 0.25,
+      "late": 225,
+      "late_detection_rate": 0.5333333333333333,
+      "poisoned": 300,
+      "undetectable_fraction": 0.6,
+      "update_p": 0.1
+    },
+    {
+      "false_flag_rate_unchanged_clean": 0.0,
+      "flag_rate_changed_clean": 1.0,
+      "from_start": 75,
+      "from_start_detection_rate": 0.0,
+      "from_start_share": 0.25,
+      "late": 225,
+      "late_detection_rate": 0.9377777777777778,
+      "poisoned": 300,
+      "undetectable_fraction": 0.2966666666666667,
+      "update_p": 0.25
+    },
+    {
+      "false_flag_rate_unchanged_clean": 0.0,
+      "flag_rate_changed_clean": 1.0,
+      "from_start": 75,
+      "from_start_detection_rate": 0.0,
+      "from_start_share": 0.25,
+      "late": 225,
+      "late_detection_rate": 0.9822222222222222,
+      "poisoned": 300,
+      "undetectable_fraction": 0.2633333333333333,
+      "update_p": 0.5
+    },
+    {
+      "false_flag_rate_unchanged_clean": 0.0,
+      "flag_rate_changed_clean": 1.0,
+      "from_start": 75,
+      "from_start_detection_rate": 0.0,
+      "from_start_share": 0.25,
+      "late": 225,
+      "late_detection_rate": 1.0,
+      "poisoned": 300,
+      "undetectable_fraction": 0.25,
+      "update_p": 0.75
+    },
+    {
+      "false_flag_rate_unchanged_clean": 0.0,
+      "flag_rate_changed_clean": 1.0,
+      "from_start": 150,
+      "from_start_detection_rate": 0.0,
+      "from_start_share": 0.5,
+      "late": 150,
+      "late_detection_rate": 0.54,
+      "poisoned": 300,
+      "undetectable_fraction": 0.73,
+      "update_p": 0.1
+    },
+    {
+      "false_flag_rate_unchanged_clean": 0.0,
+      "flag_rate_changed_clean": 1.0,
+      "from_start": 150,
+      "from_start_detection_rate": 0.0,
+      "from_start_share": 0.5,
+      "late": 150,
+      "late_detection_rate": 0.9533333333333334,
+      "poisoned": 300,
+      "undetectable_fraction": 0.5233333333333333,
+      "update_p": 0.25
+    },
+    {
+      "false_flag_rate_unchanged_clean": 0.0,
+      "flag_rate_changed_clean": 1.0,
+      "from_start": 150,
+      "from_start_detection_rate": 0.0,
+      "from_start_share": 0.5,
+      "late": 150,
+      "late_detection_rate": 0.9933333333333333,
+      "poisoned": 300,
+      "undetectable_fraction": 0.5033333333333333,
+      "update_p": 0.5
+    },
+    {
+      "false_flag_rate_unchanged_clean": 0.0,
+      "flag_rate_changed_clean": 1.0,
+      "from_start": 150,
+      "from_start_detection_rate": 0.0,
+      "from_start_share": 0.5,
+      "late": 150,
+      "late_detection_rate": 1.0,
+      "poisoned": 300,
+      "undetectable_fraction": 0.5,
+      "update_p": 0.75
+    },
+    {
+      "false_flag_rate_unchanged_clean": 0.0,
+      "flag_rate_changed_clean": 1.0,
+      "from_start": 225,
+      "from_start_detection_rate": 0.0,
+      "from_start_share": 0.75,
+      "late": 75,
+      "late_detection_rate": 0.5866666666666667,
+      "poisoned": 300,
+      "undetectable_fraction": 0.8533333333333334,
+      "update_p": 0.1
+    },
+    {
+      "false_flag_rate_unchanged_clean": 0.0,
+      "flag_rate_changed_clean": 1.0,
+      "from_start": 225,
+      "from_start_detection_rate": 0.0,
+      "from_start_share": 0.75,
+      "late": 75,
+      "late_detection_rate": 0.9466666666666667,
+      "poisoned": 300,
+      "undetectable_fraction": 0.7633333333333333,
+      "update_p": 0.25
+    },
+    {
+      "false_flag_rate_unchanged_clean": 0.0,
+      "flag_rate_changed_clean": 1.0,
+      "from_start": 225,
+      "from_start_detection_rate": 0.0,
+      "from_start_share": 0.75,
+      "late": 75,
+      "late_detection_rate": 0.9866666666666667,
+      "poisoned": 300,
+      "undetectable_fraction": 0.7533333333333333,
+      "update_p": 0.5
+    },
+    {
+      "false_flag_rate_unchanged_clean": 0.0,
+      "flag_rate_changed_clean": 1.0,
+      "from_start": 225,
+      "from_start_detection_rate": 0.0,
+      "from_start_share": 0.75,
+      "late": 75,
+      "late_detection_rate": 1.0,
+      "poisoned": 300,
+      "undetectable_fraction": 0.75,
+      "update_p": 0.75
+    },
+    {
+      "false_flag_rate_unchanged_clean": 0.0,
+      "flag_rate_changed_clean": 1.0,
+      "from_start": 300,
+      "from_start_detection_rate": 0.0,
+      "from_start_share": 1.0,
+      "late": 0,
+      "late_detection_rate": 0.0,
+      "poisoned": 300,
+      "undetectable_fraction": 1.0,
+      "update_p": 0.1
+    },
+    {
+      "false_flag_rate_unchanged_clean": 0.0,
+      "flag_rate_changed_clean": 1.0,
+      "from_start": 300,
+      "from_start_detection_rate": 0.0,
+      "from_start_share": 1.0,
+      "late": 0,
+      "late_detection_rate": 0.0,
+      "poisoned": 300,
+      "undetectable_fraction": 1.0,
+      "update_p": 0.25
+    },
+    {
+      "false_flag_rate_unchanged_clean": 0.0,
+      "flag_rate_changed_clean": 1.0,
+      "from_start": 300,
+      "from_start_detection_rate": 0.0,
+      "from_start_share": 1.0,
+      "late": 0,
+      "late_detection_rate": 0.0,
+      "poisoned": 300,
+      "undetectable_fraction": 1.0,
+      "update_p": 0.5
+    },
+    {
+      "false_flag_rate_unchanged_clean": 0.0,
+      "flag_rate_changed_clean": 1.0,
+      "from_start": 300,
+      "from_start_detection_rate": 0.0,
+      "from_start_share": 1.0,
+      "late": 0,
+      "late_detection_rate": 0.0,
+      "poisoned": 300,
+      "undetectable_fraction": 1.0,
+      "update_p": 0.75
+    }
+  ]
+}

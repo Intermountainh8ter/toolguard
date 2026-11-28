@@ -74,6 +74,15 @@ measures it.
   0.0. The mutation is an author-written description change and the unpinned
   gate never compares definitions, so the outcome follows from the
   definitions; this bounds the harness, not any deployed gate.
+- `toolguard pinsim`: model-free pin-on-first-approval scanner simulation.
+  Result `results/763-pinsim.json` (seed 7, n=1000, 8 periods): with 0.3 of
+  servers poisoned, half from first listing, a scanner that pins the schema
+  hash at first approval leaves 0.5033 of poisoned servers undetected
+  (`/pin_scanner/undetectable_fraction_at_half_poisoned_from_start`),
+  detects 0.0 of from-start poisoned servers
+  (`/pin_scanner/from_start_detection_rate`) and has a false-flag rate of 0.0
+  on unchanged clean servers. The population and update model are
+  author-written; this bounds the harness, not any deployed scanner.
 - `toolguard retryfloor`: model-free retry-policy run. Result
   `results/730-retryfloor.json` (seed 7, n=1000): bounded identical resend
   (3 retries) recovers 0.214 of injected errors
