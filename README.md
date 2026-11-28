@@ -83,6 +83,14 @@ measures it.
   (`/pin_scanner/from_start_detection_rate`) and has a false-flag rate of 0.0
   on unchanged clean servers. The population and update model are
   author-written; this bounds the harness, not any deployed scanner.
+- `toolguard ppvsweep`: model-free scanner precision-versus-prevalence run.
+  Result `results/764-ppvsweep.json` (seed 7, n=100000 per prevalence,
+  scanner sensitivity 0.8, false-positive rate 0.1): at poisoned prevalence
+  0.01 the positive predictive value is 0.0784
+  (`/ppv_by_prevalence/0/ppv`) with 12.76 alerts per true finding, and it
+  first reaches 0.5 at swept prevalence 0.2
+  (`/first_swept_prevalence_with_ppv_at_least_half`). The scanner rates are
+  author-written; this bounds the harness, not any deployed scanner.
 - `toolguard retryfloor`: model-free retry-policy run. Result
   `results/730-retryfloor.json` (seed 7, n=1000): bounded identical resend
   (3 retries) recovers 0.214 of injected errors

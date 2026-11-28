@@ -1,0 +1,95 @@
+{
+  "analytic_break_even_prevalence": 0.11111111111111112,
+  "first_swept_prevalence_with_ppv_at_least_half": 0.2,
+  "ppv_by_prevalence": [
+    {
+      "alerts_per_true_finding": 12.76179245283019,
+      "analytic_ppv": 0.07476635514018691,
+      "false_alerts": 9974,
+      "n": 100000,
+      "poisoned": 1042,
+      "ppv": 0.07835889854001109,
+      "prevalence": 0.01,
+      "true_alerts": 848
+    },
+    {
+      "alerts_per_true_finding": 7.191082802547771,
+      "analytic_ppv": 0.14035087719298245,
+      "false_alerts": 9720,
+      "n": 100000,
+      "poisoned": 1981,
+      "ppv": 0.13906111603188662,
+      "prevalence": 0.02,
+      "true_alerts": 1570
+    },
+    {
+      "alerts_per_true_finding": 3.383128295254833,
+      "analytic_ppv": 0.29629629629629634,
+      "false_alerts": 9492,
+      "n": 100000,
+      "poisoned": 4954,
+      "ppv": 0.29558441558441556,
+      "prevalence": 0.05,
+      "true_alerts": 3983
+    },
+    {
+      "alerts_per_true_finding": 2.1014783262340266,
+      "analytic_ppv": 0.47058823529411764,
+      "false_alerts": 8792,
+      "n": 100000,
+      "poisoned": 9955,
+      "ppv": 0.4758554906402766,
+      "prevalence": 0.1,
+      "true_alerts": 7982
+    },
+    {
+      "alerts_per_true_finding": 1.5010893246187365,
+      "analytic_ppv": 0.6666666666666666,
+      "false_alerts": 8050,
+      "n": 100000,
+      "poisoned": 20099,
+      "ppv": 0.6661828737300436,
+      "prevalence": 0.2,
+      "true_alerts": 16065
+    },
+    {
+      "alerts_per_true_finding": 1.2895439006086884,
+      "analytic_ppv": 0.7741935483870968,
+      "false_alerts": 6945,
+      "n": 100000,
+      "poisoned": 30027,
+      "ppv": 0.7754679771103423,
+      "prevalence": 0.3,
+      "true_alerts": 23986
+    },
+    {
+      "alerts_per_true_finding": 1.1229324988824319,
+      "analytic_ppv": 0.888888888888889,
+      "false_alerts": 4950,
+      "n": 100000,
+      "poisoned": 50183,
+      "ppv": 0.8905254777070064,
+      "prevalence": 0.5,
+      "true_alerts": 40266
+    }
+  ],
+  "provenance": {
+    "command": "cargo run --locked -q --release -- ppvsweep --seed 7 --n 100000 --out results/764-ppvsweep.json",
+    "data_sources": [
+      {
+        "license": "MIT",
+        "url": "synthetic: seeded generator, no external data"
+      }
+    ],
+    "hardware": "linux x86_64 cpu, no gpu",
+    "seeds": [
+      7
+    ],
+    "started_at": "2026-11-28T01:15:36Z",
+    "wall_s": 0.007469138
+  },
+  "scanner": {
+    "false_positive_rate": 0.1,
+    "sensitivity": 0.8
+  }
+}

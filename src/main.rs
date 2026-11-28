@@ -161,6 +161,15 @@ enum Cmd {
         #[arg(long)]
         out: std::path::PathBuf,
     },
+    /// Model-free scanner PPV-versus-prevalence simulation.
+    Ppvsweep {
+        #[arg(long, default_value_t = 7)]
+        seed: u64,
+        #[arg(long, default_value_t = 100000)]
+        n: usize,
+        #[arg(long)]
+        out: std::path::PathBuf,
+    },
     Version,
 }
 
@@ -504,6 +513,7 @@ fn main() -> anyhow::Result<()> {
         Cmd::Retryfloor { seed, n, out } => toolguard::retryfloor::write_report(n, seed, &out)?,
         Cmd::Scanner { seed, n, out } => toolguard::scanner::write_report(n, seed, &out)?,
         Cmd::Pinsim { seed, n, out } => toolguard::pinsim::write_report(n, seed, &out)?,
+        Cmd::Ppvsweep { seed, n, out } => toolguard::ppvsweep::write_report(n, seed, &out)?,
         Cmd::Version => println!("toolguard {}", env!("CARGO_PKG_VERSION")),
     }
     Ok(())

@@ -151,3 +151,19 @@ Metric: /pin_scanner/undetectable_fraction_at_half_poisoned_from_start.
 Expected: between 0.50 and 0.60; from-start detection exactly 0.0.
 Falsifier: undetectable fraction outside 0.50 to 0.60 at seed 7 n=1000, or any
 from-start poisoned server flagged, or any unchanged clean server flagged.
+
+## 2026-11-28T01:15:30Z 764-ppvsweep proposal:d29e71c804f6c89c3e89e4d903901b165a5ef8ff631ba61c865a11a8cd50e26b
+
+Hypothesis: in a seeded synthetic population of 100000 servers (seed 7)
+scanned by a scanner with fixed sensitivity 0.8 and false-positive rate 0.1
+per server, the positive predictive value at poisoned prevalence 0.01 is
+between 0.05 and 0.10 (analytic value 0.0748), alerts per true finding exceed
+10, and PPV falls below 0.5 at every swept prevalence under 0.1; the same
+scanner has PPV above 0.8 at prevalence 0.5. Poisoned status and scanner
+alerts are independent seeded Bernoulli draws.
+
+Metric: /ppv_by_prevalence/0/ppv.
+Expected: between 0.05 and 0.10.
+Falsifier: PPV at prevalence 0.01 outside 0.05 to 0.10 at seed 7 n=100000, or
+PPV at prevalence 0.05 or lower at or above 0.5, or PPV at prevalence 0.5 at
+or below 0.8.
