@@ -254,3 +254,20 @@ Metric: /arms/correlated_rho0.2/p_at_least_one.
 Expected: decreases to at most 0.51 (range 0.2 to 0.51).
 Falsifier: correlated arm exceeds 0.51 at the same marginal rate, or the
 independent arm falls outside 0.58 to 0.64 (seed 7, 20000 trials).
+
+## 2026-11-28T05:31:18Z 827-emptyarg proposal:e5cd39713252d42613d700b5f0c79f507f3964aebb85ee24f6050ca8ba3eaae3
+
+Hypothesis: under a seeded caller that omits or empties the argument on a
+swept share s of Dangerous-tier calls, a gate whose tool schemas have no
+required argument passes every empty-argument call (share of all calls passed
+equals s within sampling error), while a gate with one required string
+argument passes 0.0 of them; the required-argument gate's false-block rate on
+well-formed calls stays 0.0. Model-free; the outcome follows from the gate
+definitions, so this bounds the harness, not any deployed gate. Motivation
+only: https://neurips.cc/virtual/2026/171301.
+
+Metric: /violation/pass_rate_without_required_arg (the s=0.5 point).
+Expected: within 0.45 to 0.55; required-argument arm 0.0.
+Falsifier: no-required-argument pass rate at s=0.5 outside 0.45 to 0.55, or
+the required-argument gate passes any empty-argument call (seed 7, n=1000
+per share).

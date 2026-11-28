@@ -1,0 +1,110 @@
+{
+  "provenance": {
+    "command": "cargo run --locked -q -- emptyarg --seed 7 --n 1000 --out results/827-emptyarg.json",
+    "data_sources": [
+      {
+        "license": "MIT",
+        "url": "synthetic: seeded generator, no external data"
+      }
+    ],
+    "hardware": "linux x86_64 cpu, no gpu",
+    "seeds": [
+      7
+    ],
+    "started_at": "2026-11-28T05:31:27Z",
+    "wall_s": 0.000274733
+  },
+  "sweep": [
+    {
+      "empty_calls": 124,
+      "n": 1000,
+      "pass_rate_with_required_arg": 0.0,
+      "pass_rate_with_required_arg_wilson95": [
+        0.0,
+        0.003826898586390522
+      ],
+      "pass_rate_without_required_arg": 0.124,
+      "pass_rate_without_required_arg_wilson95": [
+        0.10499965005666721,
+        0.14587817768029848
+      ],
+      "required_arg_false_block_rate": 0.0,
+      "share": 0.1,
+      "well_formed_calls": 876
+    },
+    {
+      "empty_calls": 247,
+      "n": 1000,
+      "pass_rate_with_required_arg": 0.0,
+      "pass_rate_with_required_arg_wilson95": [
+        0.0,
+        0.003826898586390522
+      ],
+      "pass_rate_without_required_arg": 0.247,
+      "pass_rate_without_required_arg_wilson95": [
+        0.22127164907443478,
+        0.27466476161027886
+      ],
+      "required_arg_false_block_rate": 0.0,
+      "share": 0.25,
+      "well_formed_calls": 753
+    },
+    {
+      "empty_calls": 516,
+      "n": 1000,
+      "pass_rate_with_required_arg": 0.0,
+      "pass_rate_with_required_arg_wilson95": [
+        0.0,
+        0.003826898586390522
+      ],
+      "pass_rate_without_required_arg": 0.516,
+      "pass_rate_without_required_arg_wilson95": [
+        0.48502358387647304,
+        0.5468539553687625
+      ],
+      "required_arg_false_block_rate": 0.0,
+      "share": 0.5,
+      "well_formed_calls": 484
+    },
+    {
+      "empty_calls": 735,
+      "n": 1000,
+      "pass_rate_with_required_arg": 0.0,
+      "pass_rate_with_required_arg_wilson95": [
+        0.0,
+        0.003826898586390522
+      ],
+      "pass_rate_without_required_arg": 0.735,
+      "pass_rate_without_required_arg_wilson95": [
+        0.7067841462790525,
+        0.7614172113853439
+      ],
+      "required_arg_false_block_rate": 0.0,
+      "share": 0.75,
+      "well_formed_calls": 265
+    },
+    {
+      "empty_calls": 901,
+      "n": 1000,
+      "pass_rate_with_required_arg": 0.0,
+      "pass_rate_with_required_arg_wilson95": [
+        0.0,
+        0.003826898586390522
+      ],
+      "pass_rate_without_required_arg": 0.901,
+      "pass_rate_without_required_arg_wilson95": [
+        0.8809259831949872,
+        0.9180048441387278
+      ],
+      "required_arg_false_block_rate": 0.0,
+      "share": 0.9,
+      "well_formed_calls": 99
+    }
+  ],
+  "violation": {
+    "headline_share": 0.5,
+    "pass_rate_with_required_arg": 0.0,
+    "pass_rate_without_required_arg": 0.516,
+    "required_arg_false_block_rate": 0.0
+  }
+}

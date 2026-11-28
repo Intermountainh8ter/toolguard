@@ -74,6 +74,13 @@ measures it.
   0.0. The mutation is an author-written description change and the unpinned
   gate never compares definitions, so the outcome follows from the
   definitions; this bounds the harness, not any deployed gate.
+- `toolguard emptyarg`: model-free empty-argument run. Result
+  `results/827-emptyarg.json` (seed 7, n=1000 per share): at an empty-argument
+  share of 0.5 a gate with no required argument passes 0.516 of calls
+  (`/violation/pass_rate_without_required_arg`), a gate with one required
+  string argument passes 0.0, and its false-block rate on well-formed calls is
+  0.0. The outcome follows from the gate definitions; this bounds the
+  harness, not any deployed gate.
 - `toolguard compound`: model-free compounding run. Result
   `results/814-compound.json` (seed 7, 105 episodes, p 0.009, 20000 trials):
   independent episodes give P(at least one breach) 0.6144

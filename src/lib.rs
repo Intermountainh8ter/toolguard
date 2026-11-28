@@ -8,6 +8,7 @@
 //! integrity guard: at least three Dangerous-tier tools or the audit
 //! refuses to run.
 
+pub mod emptyarg;
 pub mod evasion;
 pub mod harnessnorm;
 pub mod importers;
